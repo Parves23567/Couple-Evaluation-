@@ -1167,6 +1167,31 @@ function getSession() {
 function setSession(obj) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(obj)); }
 function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
 
+// ── DEVICE TOKEN ──
+// প্রতিটি ডিভাইসে একটা unique token তৈরি হয় এবং localStorage এ থাকে
+const DEVICE_TOKEN_KEY = 'df_device_token';
+function getDeviceToken() {
+  let token = localStorage.getItem(DEVICE_TOKEN_KEY);
+  if (!token) {
+    token = 'dev_' + Math.random().toString(36).substr(2,12) + '_' + Date.now();
+    localStorage.setItem(DEVICE_TOKEN_KEY, token);
+  }
+  return token;
+}
+
+// এই ডিভাইস থেকে কোন নামগুলো submit হয়েছে
+const DEVICE_NAMES_KEY = 'df_device_names';
+function getDeviceNames() {
+  try { return JSON.parse(localStorage.getItem(DEVICE_NAMES_KEY) || '[]'); } catch(e){ return []; }
+}
+function addDeviceName(id) {
+  const names = getDeviceNames();
+  if (!names.includes(id)) { names.push(id); localStorage.setItem(DEVICE_NAMES_KEY, JSON.stringify(names)); }
+}
+function isMyDevice(id) {
+  return getDeviceNames().includes(id);
+}
+
 function isPublished() {
   return _published;
 }
@@ -1181,6 +1206,8 @@ function makeUserId(name, role) {
 
 function findSubmission(name, role) {
   const id = makeUserId(name, role);
+  // শুধু নিজের ডিভাইস থেকে করা submission দেখাবে
+  if (!isMyDevice(id)) return null;
   return _submissions.find(s => s.id === id) || null;
 }
 
@@ -1427,6 +1454,7 @@ async function finalSubmit(){
     date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
   };
   await saveSubmission(entry);
+  addDeviceName(id); // এই ডিভাইসে নাম সংরক্ষণ
   document.getElementById('reviewSection').style.display='none';
   displayResult(answers, uName, uRole);
 }
