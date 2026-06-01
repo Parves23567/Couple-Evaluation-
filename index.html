@@ -902,7 +902,7 @@ header {
 </div>
 
 <!-- ══ RESULT ══ -->
-<div id="resultSection">
+<div id="resultSection" style="display:none">
   <div id="publishedNotice" style="display:none" class="published-notice">
     <div class="notice-icon">📢</div>
     <div><p>আপনার ফলাফল লিডারবোর্ডে প্রকাশিত হয়েছে</p><small>অ্যাডমিন সবার স্কোর শেয়ার করেছেন</small></div>
@@ -1462,8 +1462,13 @@ async function finalSubmit(){
 //  RESULT DISPLAY
 // ══════════════════════════════════
 function displayResult(ans, name, role){
-  document.getElementById('resultSection').style.display='block';
-  document.getElementById('resultSection').classList.add('show');
+  // ফলাফল দেখানো সম্পূর্ণ বন্ধ
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('introSection').style.display='block';
+  document.getElementById('freshIntroBox').style.display='none';
+  document.getElementById('alreadyDoneBox').style.display='block';
+  return;
+}
 
   // published notice (driven by Firebase realtime listener)
   const pub = isPublished();
