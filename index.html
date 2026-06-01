@@ -850,11 +850,9 @@ header {
 <div id="introSection">
   <div id="alreadyDoneBox" style="display:none">
     <div class="already-done-card">
-      <h3>✅ আপনি ইতিমধ্যে মূল্যায়ন করেছেন</h3>
-      <p>আপনার উত্তর সংরক্ষিত আছে। নিচে আপনার ফলাফল দেখুন।</p>
-      <br>
-      <button class="btn-main" onclick="viewOwnResult()">আমার ফলাফল দেখুন →</button>
-      <button class="btn-ghost" onclick="redoQuiz()">পুনরায় মূল্যায়ন করুন</button>
+      <div style="font-size:2.5rem;margin-bottom:12px">✅</div>
+      <h3>মূল্যায়ন সম্পন্ন হয়েছে</h3>
+      <p>আপনি ইতিমধ্যে আপনার জীবনসঙ্গীকে মূল্যায়ন করেছেন।<br>ধন্যবাদ অংশগ্রহণের জন্য! 💖</p>
     </div>
   </div>
   <div id="freshIntroBox">
@@ -1206,13 +1204,7 @@ function makeUserId(name, role) {
 
 function findSubmission(name, role) {
   const id = makeUserId(name, role);
-  const sub = _submissions.find(s => s.id === id);
-  if (!sub) return null;
-  // যদি submission এ deviceToken থাকে, তাহলে এই ডিভাইসের token এর সাথে মিলাও
-  if (sub.deviceToken && sub.deviceToken !== getDeviceToken()) return null;
-  // পুরনো submission এ deviceToken নেই — localStorage দিয়ে check করো
-  if (!sub.deviceToken && !isMyDevice(id)) return null;
-  return sub;
+  return _submissions.find(s => s.id === id) || null;
 }
 
 // ══════════════════════════════════
