@@ -1451,9 +1451,13 @@ async function finalSubmit(){
     date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
   };
   await saveSubmission(entry);
-  addDeviceName(id); // এই ডিভাইসে নাম সংরক্ষণ
+  addDeviceName(id);
+  // ফলাফল না দেখিয়ে শুধু ধন্যবাদ বার্তা
   document.getElementById('reviewSection').style.display='none';
-  displayResult(answers, uName, uRole);
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('introSection').style.display='block';
+  document.getElementById('freshIntroBox').style.display='none';
+  document.getElementById('alreadyDoneBox').style.display='block';
 }
 
 // ══════════════════════════════════
