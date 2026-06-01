@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জীবনসঙ্গী মূল্যায়ন – Dashing Family Members</title>
+<link rel="icon" type="image/svg+xml" href="couple-evaluation-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700;900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCD0VlQlogb8suSbh2GFkxEdWMbQ--ugn4",
+    authDomain: "familyapp-b0a52.firebaseapp.com",
+    databaseURL: "https://familyapp-b0a52-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "familyapp-b0a52",
+    storageBucket: "familyapp-b0a52.firebasestorage.app",
+    messagingSenderId: "774001001178",
+    appId: "1:774001001178:web:6e7dd5a7f220c68f51dbe3",
+    measurementId: "G-Q0HSLHYWL1"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+<style>
+:root {
+  --cream: #fdf6ee;
+  --warm: #f5ebe0;
+  --blush: #e8c4b8;
+  --rose:  #c1666b;
+  --deep:  #7b2d35;
+  --gold:  #c49a3c;
+  --gold2: #e8c56d;
+  --ink:   #2c1810;
+  --muted: #7a5c52;
+  --card:  #ffffff;
+  --shadow: rgba(123,45,53,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(193,102,107,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(196,154,60,0.07) 0%, transparent 55%);
+  position: relative;
+}
+
+/* ── FLOWER WATERMARK LAYER ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.055;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23b84055'%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(45 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(90 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(135 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(180 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(225 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(270 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(315 60 60)' opacity='0.9'/%3E%3Ccircle cx='60' cy='60' r='8' fill='%237b2d35'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%23c49a3c'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg fill='%23c49a3c'%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(60 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(120 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(180 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(240 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(300 40 40)' opacity='0.85'/%3E%3Ccircle cx='40' cy='40' r='6' fill='%237b2d35'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23f5e07a'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23b84055' stroke-width='2'%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(72 50 50)' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(144 50 50)' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(216 50 50)' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(288 50 50)' opacity='0.8'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='5' fill='%23c49a3c'/%3E%3C/svg%3E");
+  background-size: 180px 180px, 120px 120px, 150px 150px;
+  background-position: 0 0, 90px 90px, 45px 45px;
+}
+
+/* make sure all content sits above watermark */
+body > * { position: relative; z-index: 1; }
+
+.ornament { text-align:center; font-size:1.1rem; color:var(--gold); letter-spacing:6px; opacity:0.7; }
+
+header {
+  padding: 28px 20px 24px;
+  text-align: center;
+  position: relative;
+}
+.site-logo {
+  display: flex; justify-content: center; align-items: center;
+  margin-bottom: 10px;
+}
+.site-logo svg {
+  filter: drop-shadow(0 4px 18px rgba(193,102,107,0.35));
+  transition: transform 0.4s ease;
+}
+.site-logo svg:hover { transform: scale(1.06) rotate(2deg); }
+.brand-tag { font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.app-title {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 900; color: var(--deep); line-height:1.2;
+  position:relative; display:inline-block;
+}
+.app-title::after {
+  content:''; display:block; height:3px;
+  background:linear-gradient(90deg, transparent, var(--gold), var(--rose), var(--gold), transparent);
+  margin:10px auto 0; border-radius:2px;
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer { 0%,100%{opacity:0.6} 50%{opacity:1} }
+.subtitle { margin-top:8px; font-size:0.88rem; color:var(--muted); }
+
+.divider { display:flex; align-items:center; gap:12px; max-width:500px; margin:0 auto 28px; padding:0 20px; }
+.divider-line { flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--blush)); }
+.divider-line.r { background:linear-gradient(90deg, var(--blush), transparent); }
+.divider-icon { color:var(--rose); font-size:1rem; }
+
+.wrap { max-width:620px; margin:0 auto; padding:0 16px 60px; }
+
+/* ── LOGIN ── */
+#loginSection {}
+.login-card {
+  background: var(--card); border-radius:24px; padding:32px 24px;
+  box-shadow: 0 4px 24px var(--shadow), 0 1px 4px rgba(0,0,0,0.04);
+  border: 1px solid rgba(193,102,107,0.12); margin-bottom:20px;
+}
+.login-card h2 {
+  font-family:'Noto Serif Bengali', serif; font-size:1.2rem;
+  color:var(--deep); margin-bottom:20px; text-align:center;
+}
+.field-group { margin-bottom:16px; }
+.field-group label { display:block; font-size:0.82rem; font-weight:600; color:var(--muted); margin-bottom:6px; }
+.field-group input, .field-group select {
+  width:100%; padding:12px 14px; border-radius:12px;
+  border:1.5px solid var(--blush); background:var(--warm);
+  font-family:'Hind Siliguri', sans-serif; font-size:0.95rem;
+  color:var(--ink); outline:none; transition:border-color 0.2s;
+}
+.field-group input:focus, .field-group select:focus { border-color:var(--rose); }
+.field-group input::placeholder { color:#b09080; }
+.login-tabs { display:flex; gap:8px; margin-bottom:24px; }
+.login-tab {
+  flex:1; padding:10px; border-radius:12px; border:1.5px solid var(--blush);
+  background:transparent; font-family:'Hind Siliguri',sans-serif; font-size:0.9rem;
+  color:var(--muted); cursor:pointer; transition:all 0.2s; text-align:center; font-weight:500;
+}
+.login-tab.active { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
+.error-msg { color:#e53e3e; font-size:0.82rem; text-align:center; margin-top:8px; min-height:20px; }
+
+/* ── INTRO ── */
+#introSection { display:none; }
+.intro-card {
+  background:var(--card); border-radius:24px; padding:30px 24px;
+  box-shadow:0 4px 24px var(--shadow), 0 1px 4px rgba(0,0,0,0.04);
+  border:1px solid rgba(193,102,107,0.12); margin-bottom:20px; text-align:center;
+}
+.intro-card h2 { font-family:'Noto Serif Bengali',serif; font-size:1.15rem; color:var(--deep); margin-bottom:14px; }
+.intro-card p { font-size:0.9rem; line-height:1.8; color:var(--muted); }
+.q-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:18px; }
+.q-chip { padding:5px 14px; border-radius:99px; font-size:0.78rem; font-weight:500; background:var(--warm); border:1px solid var(--blush); color:var(--deep); }
+
+.name-card {
+  background:var(--card); border-radius:24px; padding:28px 24px;
+  box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.12); margin-bottom:20px;
+}
+.name-card label { display:block; font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); font-weight:600; margin-bottom:12px; text-align:center; }
+.name-inputs { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.name-inputs input, .name-inputs select {
+  width:100%; padding:12px 14px; border-radius:12px; border:1.5px solid var(--blush);
+  background:var(--warm); font-family:'Hind Siliguri',sans-serif; font-size:0.95rem; color:var(--ink); outline:none; transition:border-color 0.2s;
+}
+.name-inputs input:focus, .name-inputs select:focus { border-color:var(--rose); }
+.name-inputs input::placeholder { color:#b09080; }
+@media(max-width:420px){ .name-inputs { grid-template-columns:1fr; } }
+
+.already-done-card {
+  background:linear-gradient(135deg,#fdf0e8,#fdf6ee); border:1px solid var(--blush);
+  border-radius:20px; padding:24px; margin-bottom:20px; text-align:center;
+}
+.already-done-card h3 { font-family:'Noto Serif Bengali',serif; color:var(--deep); margin-bottom:8px; }
+.already-done-card p { font-size:0.88rem; color:var(--muted); line-height:1.7; }
+
+/* ── BTN ── */
+.btn-main {
+  width:100%; padding:15px; border-radius:16px; border:none;
+  background:linear-gradient(135deg, var(--rose), var(--deep));
+  color:#fff; font-family:'Noto Serif Bengali',serif;
+  font-size:1.05rem; font-weight:700; cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.2s;
+  box-shadow:0 4px 16px rgba(123,45,53,0.3); letter-spacing:0.5px;
+}
+.btn-main:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(123,45,53,0.35); }
+.btn-main:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+.btn-ghost {
+  width:100%; padding:13px; border-radius:16px; border:1.5px solid var(--blush);
+  background:transparent; color:var(--muted); font-family:'Hind Siliguri',sans-serif;
+  font-size:0.95rem; cursor:pointer; margin-top:10px; transition:all 0.2s;
+}
+.btn-ghost:hover { border-color:var(--rose); color:var(--rose); }
+.btn-sm {
+  padding:7px 16px; border-radius:10px; border:none;
+  background:linear-gradient(135deg,var(--rose),var(--deep));
+  color:#fff; font-family:'Hind Siliguri',sans-serif;
+  font-size:0.8rem; font-weight:600; cursor:pointer;
+  transition:transform 0.15s; display:inline-block;
+}
+.btn-sm:hover { transform:translateY(-1px); }
+.btn-sm.ghost { background:transparent; border:1.5px solid var(--blush); color:var(--muted); }
+.btn-sm.ghost:hover { border-color:var(--rose); color:var(--rose); }
+
+/* ── PROGRESS ── */
+.progress-area { max-width:620px; margin:0 auto 24px; padding:0 16px; }
+.progress-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.progress-q-label { font-size:0.8rem; color:var(--muted); font-weight:500; }
+.progress-pct { font-size:0.8rem; color:var(--rose); font-weight:700; }
+.pbar-bg { height:7px; border-radius:99px; background:var(--blush); overflow:hidden; }
+.pbar-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); transition:width 0.5s cubic-bezier(.4,0,.2,1); }
+.user-badge { display:inline-flex; align-items:center; gap:6px; background:var(--warm); border:1px solid var(--blush); border-radius:99px; padding:4px 14px; font-size:0.8rem; color:var(--deep); font-weight:600; margin-bottom:12px; }
+.user-badge span { color:var(--rose); }
+
+/* ── QUESTION CARD ── */
+#quizSection { display:none; }
+.q-card {
+  background:var(--card); border-radius:24px; padding:28px 22px 22px;
+  box-shadow:0 6px 32px var(--shadow); border:1px solid rgba(193,102,107,0.1);
+  margin-bottom:16px; animation:slideUp 0.4s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+}
+@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.q-card::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.q-num { font-size:0.72rem; font-weight:700; color:var(--gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+.q-text { font-family:'Noto Serif Bengali',serif; font-size:1.08rem; line-height:1.7; color:var(--ink); margin-bottom:8px; }
+.q-hint { font-size:0.78rem; color:var(--muted); margin-bottom:20px; font-style:italic; }
+.score-slider-wrap { margin-bottom:6px; }
+.score-track { display:flex; gap:5px; justify-content:space-between; }
+.score-btn {
+  flex:1; padding:11px 4px; border-radius:10px; border:1.5px solid var(--blush);
+  background:var(--warm); color:var(--muted); font-family:'Hind Siliguri',sans-serif;
+  font-size:0.85rem; font-weight:600; cursor:pointer; text-align:center; transition:all 0.18s; line-height:1;
+}
+.score-btn:hover { border-color:var(--rose); color:var(--rose); background:#fdf0ee; }
+.score-btn.sel { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; transform:scale(1.06); box-shadow:0 3px 12px rgba(193,102,107,0.35); }
+.score-meaning { display:flex; justify-content:space-between; margin-top:8px; font-size:0.72rem; color:var(--muted); }
+.chosen-label { text-align:center; margin-top:12px; font-size:0.85rem; font-weight:600; color:var(--rose); min-height:22px; transition:all 0.2s; }
+
+/* ── RESULT ── */
+#resultSection { display:none; }
+#resultSection.show { display:block; animation:slideUp 0.5s ease; }
+.result-header {
+  background:linear-gradient(135deg,var(--deep),#4a1520); border-radius:24px; padding:32px 24px;
+  text-align:center; color:#fff; margin-bottom:20px;
+  box-shadow:0 8px 40px rgba(123,45,53,0.4); position:relative; overflow:hidden;
+}
+.result-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%, rgba(196,154,60,0.2), transparent 70%); }
+.result-name { font-size:0.82rem; letter-spacing:2px; color:var(--gold2); text-transform:uppercase; margin-bottom:6px; position:relative; }
+.result-title { font-family:'Noto Serif Bengali',serif; font-size:1.4rem; font-weight:900; margin-bottom:20px; position:relative; }
+.big-score-wrap { position:relative; display:inline-block; width:150px; height:150px; margin:0 auto 16px; }
+.big-score-wrap svg { width:150px; height:150px; transform:rotate(-90deg); }
+.big-score-inner { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.big-score-num { font-family:'Noto Serif Bengali',serif; font-size:2.6rem; font-weight:900; color:#fff; line-height:1; }
+.big-score-max { font-size:0.75rem; color:var(--gold2); margin-top:2px; }
+.verdict-pill { display:inline-block; padding:6px 20px; border-radius:99px; font-size:0.95rem; font-weight:700; margin-bottom:10px; position:relative; }
+.v-excellent { background:rgba(52,211,153,0.2); border:1.5px solid #34d399; color:#34d399; }
+.v-good { background:rgba(96,165,250,0.2); border:1.5px solid #60a5fa; color:#93c5fd; }
+.v-average { background:rgba(251,191,36,0.2); border:1.5px solid #fbbf24; color:#fbbf24; }
+.v-poor { background:rgba(248,113,113,0.2); border:1.5px solid #f87171; color:#f87171; }
+.verdict-msg { font-size:0.88rem; color:rgba(255,255,255,0.7); position:relative; line-height:1.6; }
+.breakdown-card { background:var(--card); border-radius:24px; padding:24px 20px; box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.1); margin-bottom:16px; }
+.breakdown-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:18px; text-align:center; }
+.bq-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px dashed rgba(193,102,107,0.12); }
+.bq-row:last-child { border:none; }
+.bq-num { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--rose),var(--deep)); color:#fff; font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.bq-text { flex:1; font-size:0.82rem; color:var(--muted); line-height:1.4; }
+.bq-score { font-weight:700; font-size:0.95rem; color:var(--rose); min-width:32px; text-align:right; }
+.advice-card { background:linear-gradient(135deg,#fdf0e8,#fdf6ee); border:1px solid var(--blush); border-radius:20px; padding:22px; margin-bottom:20px; }
+.advice-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.advice-card p { font-size:0.88rem; line-height:1.8; color:var(--muted); }
+.disclaimer { text-align:center; font-size:0.73rem; color:var(--muted); opacity:0.6; margin-top:20px; line-height:1.7; }
+.footer-brand { text-align:center; font-size:0.78rem; color:var(--gold); font-weight:600; letter-spacing:1px; margin-top:8px; }
+
+/* ── LOGOUT BAR ── */
+.top-bar {
+  display:none; max-width:620px; margin:0 auto 12px; padding:0 16px;
+  align-items:center; justify-content:space-between; gap:8px;
+}
+.top-bar.visible { display:flex; }
+.top-bar-info { font-size:0.8rem; color:var(--muted); }
+.top-bar-info strong { color:var(--deep); }
+
+/* ── ADMIN PANEL ── */
+#adminSection { display:none; }
+.admin-header {
+  background:linear-gradient(135deg,#1a0a0d,#4a1520); border-radius:24px; padding:24px;
+  margin-bottom:20px; text-align:center; position:relative; overflow:hidden;
+}
+.admin-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.15),transparent 70%); }
+.admin-header h2 { font-family:'Noto Serif Bengali',serif; color:#fff; font-size:1.4rem; position:relative; margin-bottom:4px; }
+.admin-header p { font-size:0.8rem; color:var(--gold2); position:relative; }
+
+.stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+.stat-box { background:var(--card); border-radius:16px; padding:16px 12px; text-align:center; box-shadow:0 2px 12px var(--shadow); border:1px solid rgba(193,102,107,0.1); }
+.stat-num { font-family:'Noto Serif Bengali',serif; font-size:1.8rem; font-weight:900; color:var(--deep); line-height:1; }
+.stat-lbl { font-size:0.72rem; color:var(--muted); margin-top:4px; }
+
+.filter-bar { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.filter-btn { padding:7px 14px; border-radius:10px; border:1.5px solid var(--blush); background:transparent; font-family:'Hind Siliguri',sans-serif; font-size:0.8rem; color:var(--muted); cursor:pointer; transition:all 0.2s; }
+.filter-btn.active { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
+
+.submissions-card { background:var(--card); border-radius:24px; padding:20px; box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.1); margin-bottom:20px; }
+.submissions-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:16px; }
+.sub-item {
+  border:1px solid rgba(193,102,107,0.12); border-radius:16px; padding:16px;
+  margin-bottom:12px; cursor:pointer; transition:all 0.2s;
+  background:var(--warm);
+}
+.sub-item:hover { border-color:var(--rose); box-shadow:0 2px 12px var(--shadow); }
+.sub-item:last-child { margin-bottom:0; }
+.sub-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.sub-name { font-family:'Noto Serif Bengali',serif; font-weight:700; color:var(--deep); font-size:0.95rem; }
+.sub-role { font-size:0.75rem; color:var(--muted); background:var(--blush); padding:2px 10px; border-radius:99px; }
+.sub-score-row { display:flex; align-items:center; gap:8px; }
+.sub-score-bar-bg { flex:1; height:6px; border-radius:99px; background:#e8c4b8; overflow:hidden; }
+.sub-score-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.sub-score-num { font-size:0.82rem; font-weight:700; color:var(--rose); min-width:40px; text-align:right; }
+.sub-date { font-size:0.7rem; color:var(--muted); margin-top:6px; }
+.empty-state { text-align:center; padding:40px 20px; color:var(--muted); font-size:0.88rem; line-height:1.8; }
+
+/* MODAL */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(44,24,16,0.7); z-index:1000;
+  align-items:center; justify-content:center; padding:16px;
+}
+.modal-overlay.open { display:flex; }
+.modal-box {
+  background:var(--cream); border-radius:24px; padding:28px 22px;
+  max-width:540px; width:100%; max-height:90vh; overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3); animation:slideUp 0.3s ease;
+}
+.modal-box h2 { font-family:'Noto Serif Bengali',serif; color:var(--deep); font-size:1.15rem; margin-bottom:16px; text-align:center; }
+.modal-result-header {
+  background:linear-gradient(135deg,var(--deep),#4a1520); border-radius:16px;
+  padding:20px; text-align:center; color:#fff; margin-bottom:16px;
+  position:relative; overflow:hidden;
+}
+.modal-result-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.2),transparent 70%); }
+.modal-score-big { font-family:'Noto Serif Bengali',serif; font-size:3rem; font-weight:900; color:#fff; position:relative; }
+.modal-score-label { font-size:0.8rem; color:var(--gold2); position:relative; }
+.modal-close { width:100%; padding:12px; border-radius:12px; border:1.5px solid var(--blush); background:transparent; color:var(--muted); font-family:'Hind Siliguri',sans-serif; font-size:0.9rem; cursor:pointer; margin-top:16px; transition:all 0.2s; }
+.modal-close:hover { border-color:var(--rose); color:var(--rose); }
+
+/* AVG CHART */
+.avg-chart { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.avg-row { display:flex; align-items:center; gap:8px; }
+.avg-label { font-size:0.72rem; color:var(--muted); min-width:90px; text-align:right; }
+.avg-bar-bg { flex:1; height:8px; border-radius:99px; background:var(--blush); overflow:hidden; }
+.avg-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.avg-val { font-size:0.72rem; font-weight:700; color:var(--rose); min-width:28px; }
+
+@media(max-width:400px){ .stats-row{grid-template-columns:1fr 1fr;} }
+
+/* ── LEADERBOARD ── */
+#leaderboardSection { display:none; }
+.lb-header {
+  background:linear-gradient(135deg, #1a0a0d, #7b2d35);
+  border-radius:24px; padding:28px 24px; text-align:center;
+  margin-bottom:20px; position:relative; overflow:hidden;
+}
+.lb-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.25),transparent 65%); }
+.lb-header h2 { font-family:'Noto Serif Bengali',serif; color:#fff; font-size:1.5rem; font-weight:900; position:relative; margin-bottom:4px; }
+.lb-header p { font-size:0.8rem; color:var(--gold2); position:relative; }
+.lb-published-date { font-size:0.72rem; color:rgba(255,255,255,0.5); margin-top:6px; position:relative; }
+
+.lb-card { background:var(--card); border-radius:24px; padding:20px; box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.1); margin-bottom:20px; }
+.lb-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:16px; text-align:center; }
+
+.lb-row {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 10px; border-radius:14px; margin-bottom:8px;
+  border:1px solid rgba(193,102,107,0.1); background:var(--warm);
+}
+.lb-row:last-child { margin-bottom:0; }
+.lb-row.rank-1 { background:linear-gradient(135deg,rgba(196,154,60,0.15),rgba(232,197,109,0.08)); border-color:var(--gold); }
+.lb-row.rank-2 { background:linear-gradient(135deg,rgba(180,180,180,0.12),rgba(200,200,200,0.06)); border-color:#aaa; }
+.lb-row.rank-3 { background:linear-gradient(135deg,rgba(180,100,60,0.12),rgba(200,120,80,0.06)); border-color:#c87c50; }
+
+.lb-rank {
+  width:36px; height:36px; border-radius:50%; display:flex;
+  align-items:center; justify-content:center; font-weight:900;
+  font-size:0.9rem; flex-shrink:0; background:var(--blush); color:var(--deep);
+}
+.lb-row.rank-1 .lb-rank { background:linear-gradient(135deg,#c49a3c,#e8c56d); color:#fff; font-size:1.1rem; }
+.lb-row.rank-2 .lb-rank { background:linear-gradient(135deg,#888,#bbb); color:#fff; }
+.lb-row.rank-3 .lb-rank { background:linear-gradient(135deg,#a0522d,#cd853f); color:#fff; }
+
+.lb-info { flex:1; min-width:0; }
+.lb-name { font-family:'Noto Serif Bengali',serif; font-weight:700; color:var(--deep); font-size:0.95rem; }
+.lb-role-tag { font-size:0.7rem; color:var(--muted); background:var(--blush); padding:2px 8px; border-radius:99px; display:inline-block; margin-top:3px; }
+
+.lb-score-col { text-align:right; flex-shrink:0; }
+.lb-score-num { font-family:'Noto Serif Bengali',serif; font-size:1.3rem; font-weight:900; color:var(--deep); line-height:1; }
+.lb-score-max { font-size:0.65rem; color:var(--muted); }
+.lb-medal { font-size:1.4rem; flex-shrink:0; width:24px; text-align:center; }
+
+/* publish toggle in admin */
+.publish-bar {
+  background:linear-gradient(135deg,#fdf0e8,#fdf6ee); border:1px solid var(--blush);
+  border-radius:20px; padding:18px 20px; margin-bottom:20px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+.publish-bar-info h4 { font-family:'Noto Serif Bengali',serif; color:var(--deep); font-size:0.95rem; margin-bottom:3px; }
+.publish-bar-info p { font-size:0.78rem; color:var(--muted); }
+.toggle-wrap { display:flex; align-items:center; gap:10px; }
+.toggle-switch { position:relative; width:52px; height:28px; cursor:pointer; }
+.toggle-switch input { opacity:0; width:0; height:0; }
+.toggle-slider { position:absolute; inset:0; background:var(--blush); border-radius:99px; transition:0.3s; }
+.toggle-slider::before { content:''; position:absolute; width:22px; height:22px; left:3px; top:3px; background:#fff; border-radius:50%; transition:0.3s; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
+.toggle-switch input:checked + .toggle-slider { background:linear-gradient(135deg,var(--rose),var(--deep)); }
+.toggle-switch input:checked + .toggle-slider::before { transform:translateX(24px); }
+.toggle-label { font-size:0.82rem; font-weight:600; color:var(--muted); }
+
+/* published notice for user */
+.published-notice {
+  background:linear-gradient(135deg,rgba(196,154,60,0.12),rgba(193,102,107,0.08));
+  border:1.5px solid var(--gold); border-radius:16px; padding:14px 18px;
+  margin-bottom:16px; display:flex; align-items:center; gap:10px;
+}
+.published-notice .notice-icon { font-size:1.4rem; flex-shrink:0; }
+.published-notice p { font-size:0.85rem; color:var(--deep); font-weight:600; }
+.published-notice small { display:block; font-size:0.75rem; color:var(--muted); font-weight:400; margin-top:2px; }
+
+/* ── CORNER FLOWER DECORATIONS ── */
+.flower-corner {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+}
+.flower-corner.tl { top: -20px; left: -20px; transform: rotate(0deg); }
+.flower-corner.tr { top: -20px; right: -20px; transform: rotate(90deg); }
+.flower-corner.bl { bottom: -20px; left: -20px; transform: rotate(270deg); }
+.flower-corner.br { bottom: -20px; right: -20px; transform: rotate(180deg); }
+
+
+#reviewSection { animation: slideUp 0.4s ease; }
+.review-header-card {
+  background: var(--card); border-radius: 24px; padding: 28px 24px;
+  text-align: center; margin-bottom: 20px;
+  box-shadow: 0 4px 24px var(--shadow); border: 1px solid rgba(193,102,107,0.12);
+}
+.review-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.review-header-card h2 { font-family:'Noto Serif Bengali',serif; color:var(--deep); font-size:1.15rem; margin-bottom:8px; }
+.review-header-card p { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+
+.review-item {
+  background: var(--card); border-radius: 20px; padding: 18px 18px 14px;
+  margin-bottom: 14px; box-shadow: 0 2px 12px var(--shadow);
+  border: 1.5px solid rgba(193,102,107,0.1);
+  transition: border-color 0.2s;
+}
+.review-item.editing { border-color: var(--rose); }
+.review-item-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px; }
+.review-q-topic { font-size:0.78rem; font-weight:700; color:var(--gold); letter-spacing:1px; margin-bottom:4px; }
+.review-q-text { font-family:'Noto Serif Bengali',serif; font-size:0.92rem; color:var(--ink); line-height:1.5; }
+.review-score-display { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.review-score-num { font-family:'Noto Serif Bengali',serif; font-size:1.6rem; font-weight:900; color:var(--rose); line-height:1; }
+.review-score-label { font-size:0.68rem; color:var(--muted); margin-top:2px; text-align:center; max-width:60px; }
+.review-edit-area { display:none; margin-top:12px; padding-top:12px; border-top:1px dashed var(--blush); }
+.review-item.editing .review-edit-area { display:block; }
+.review-score-track { display:flex; gap:4px; justify-content:space-between; margin-bottom:6px; }
+.review-score-btn {
+  flex:1; padding:9px 2px; border-radius:8px; border:1.5px solid var(--blush);
+  background:var(--warm); color:var(--muted); font-size:0.8rem; font-weight:600;
+  cursor:pointer; text-align:center; transition:all 0.15s;
+}
+.review-score-btn:hover { border-color:var(--rose); color:var(--rose); }
+.review-score-btn.sel { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; transform:scale(1.08); }
+.btn-edit {
+  padding:5px 14px; border-radius:9px; border:1.5px solid var(--blush);
+  background:transparent; color:var(--muted); font-size:0.78rem; font-weight:600;
+  cursor:pointer; transition:all 0.2s; white-space:nowrap;
+}
+.btn-edit:hover { border-color:var(--rose); color:var(--rose); }
+.btn-edit.done { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
+
+/* ── ADMIN LB GENERATE CARD ── */
+.lb-generate-card {
+  background: linear-gradient(135deg, #1a0a0d, #4a1520);
+  border-radius: 24px; padding: 28px 24px; margin-bottom: 20px;
+  color: #fff; position: relative; overflow: hidden;
+}
+.lb-generate-card::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.2),transparent 70%); }
+.lb-generate-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1.1rem; margin-bottom:6px; position:relative; }
+.lb-generate-card p { font-size:0.82rem; color:rgba(255,255,255,0.6); margin-bottom:0; position:relative; }
+.lb-generate-card .btn-main { position:relative; margin-top:16px; background:linear-gradient(135deg,var(--gold),#a07020); }
+
+/* ── ADMIN LEADERBOARD PRINTABLE ── */
+#adminLbSection { max-width: 720px; margin: 0 auto; padding: 0 16px 60px; }
+.alb-print-bar {
+  display: flex; gap: 10px; margin-bottom: 20px;
+  justify-content: flex-end; flex-wrap: wrap;
+}
+#adminLbContent {
+  background: #fff; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+.alb-header {
+  background: linear-gradient(135deg, #4a1520, #7b2d35);
+  padding: 36px 28px; text-align: center; position: relative; overflow: hidden;
+}
+.alb-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.25),transparent 65%); }
+.alb-brand { font-size:0.75rem; letter-spacing:4px; color:var(--gold2); margin-bottom:8px; position:relative; }
+.alb-title { font-family:'Noto Serif Bengali',serif; font-size:1.8rem; font-weight:900; color:#fff; margin-bottom:6px; position:relative; }
+.alb-subtitle { font-size:0.9rem; color:rgba(255,255,255,0.7); position:relative; }
+.alb-date { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:8px; position:relative; }
+
+.alb-stats-row {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: #f0e8e0; border-bottom: 1px solid #f0e8e0;
+}
+.alb-stat { background:#fff; padding:18px 12px; text-align:center; }
+.alb-stat-num { font-family:'Noto Serif Bengali',serif; font-size:1.8rem; font-weight:900; color:var(--deep); }
+.alb-stat-lbl { font-size:0.72rem; color:var(--muted); margin-top:3px; }
+
+.alb-section { padding: 24px 24px 8px; }
+.alb-section-title {
+  font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep);
+  margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--blush);
+  display:flex; align-items:center; gap:8px;
+}
+
+/* rank table */
+.alb-rank-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 14px; margin-bottom: 8px;
+  border: 1.5px solid #f0e0d8; background: #fdf6ee;
+}
+.alb-rank-row.r1 { background:linear-gradient(135deg,#fffbe8,#fff8dc); border-color:var(--gold); }
+.alb-rank-row.r2 { background:linear-gradient(135deg,#f5f5f5,#ececec); border-color:#bbb; }
+.alb-rank-row.r3 { background:linear-gradient(135deg,#fff0e8,#ffe8d8); border-color:#c87c50; }
+.alb-rank-num {
+  width:38px; height:38px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-weight:900; font-size:0.9rem; flex-shrink:0;
+  background:var(--blush); color:var(--deep);
+}
+.alb-rank-row.r1 .alb-rank-num { background:linear-gradient(135deg,#c49a3c,#e8c56d); color:#fff; }
+.alb-rank-row.r2 .alb-rank-num { background:linear-gradient(135deg,#888,#bbb); color:#fff; }
+.alb-rank-row.r3 .alb-rank-num { background:linear-gradient(135deg,#a0522d,#cd853f); color:#fff; }
+.alb-rank-info { flex:1; }
+.alb-rank-name { font-family:'Noto Serif Bengali',serif; font-weight:700; color:var(--deep); font-size:0.95rem; }
+.alb-rank-role { font-size:0.72rem; color:var(--muted); background:var(--blush); padding:2px 8px; border-radius:99px; display:inline-block; margin-top:2px; }
+.alb-rank-score { font-family:'Noto Serif Bengali',serif; font-size:1.5rem; font-weight:900; color:var(--deep); flex-shrink:0; }
+.alb-rank-score span { font-size:0.7rem; color:var(--muted); font-weight:400; }
+.alb-rank-bar-wrap { width:80px; flex-shrink:0; }
+.alb-rank-bar-bg { height:6px; border-radius:99px; background:#e8c4b8; overflow:hidden; }
+.alb-rank-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.alb-medal { font-size:1.4rem; flex-shrink:0; width:26px; text-align:center; }
+
+/* breakdown per person */
+.alb-person-card {
+  border: 1px solid #f0e0d8; border-radius: 14px; margin-bottom: 16px; overflow: hidden;
+}
+.alb-person-head {
+  background: linear-gradient(135deg, var(--deep), #4a1520);
+  padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+}
+.alb-person-name { font-family:'Noto Serif Bengali',serif; color:#fff; font-weight:700; font-size:0.95rem; }
+.alb-person-role { font-size:0.72rem; color:var(--gold2); }
+.alb-person-score { font-family:'Noto Serif Bengali',serif; font-size:1.3rem; font-weight:900; color:#fff; }
+.alb-person-verdict { font-size:0.72rem; color:var(--gold2); text-align:right; }
+.alb-q-rows { padding: 10px 14px; }
+.alb-q-row { display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px dashed #f0e0d8; }
+.alb-q-row:last-child { border:none; }
+.alb-q-topic { font-size:0.78rem; color:var(--muted); flex:1; }
+.alb-q-bar-bg { width:80px; height:5px; border-radius:99px; background:#f0e0d8; overflow:hidden; flex-shrink:0; }
+.alb-q-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.alb-q-score { font-size:0.8rem; font-weight:700; color:var(--rose); min-width:30px; text-align:right; }
+
+.alb-footer {
+  background: #fdf6ee; border-top: 1px solid #f0e0d8;
+  padding: 20px 24px; text-align: center;
+  font-size: 0.75rem; color: var(--muted); line-height: 1.8;
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+  body * { visibility: hidden !important; }
+  #adminLbContent, #adminLbContent * { visibility: visible !important; }
+  #adminLbContent {
+    position: fixed; inset: 0; border-radius: 0; box-shadow: none;
+    overflow: visible !important;
+  }
+  .alb-print-bar { display: none !important; }
+  .alb-person-card { page-break-inside: avoid; break-inside: avoid; }
+  .alb-rank-row { page-break-inside: avoid; break-inside: avoid; }
+  .alb-section { page-break-inside: avoid; break-inside: avoid; }
+  .alb-header { page-break-after: avoid; }
+  .alb-stats-row { page-break-after: avoid; }
+}
+
+/* delete buttons */
+.del-btn {
+  background:rgba(248,113,113,0.15); border:1.5px solid #f87171;
+  color:#f87171; border-radius:8px; padding:3px 8px; font-size:0.78rem;
+  cursor:pointer; transition:all 0.2s; flex-shrink:0;
+}
+.del-btn:hover { background:#f87171; color:#fff; }
+.del-all-btn {
+  background:rgba(248,113,113,0.1); border:1.5px solid #f87171;
+  color:#f87171; border-radius:10px; padding:6px 12px; font-size:0.78rem;
+  font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+}
+.del-all-btn:hover { background:#f87171; color:#fff; }
+
+/* print styles */
+@media print {
+  .top-bar, .btn-ghost, .btn-main, .advice-card, .disclaimer, header { display:none !important; }
+  #resultSection { display:block !important; }
+  .footer-brand { display:block !important; }
+  body { background:#fff; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="90" height="90">
+      <defs>
+        <radialGradient id="hbg" cx="50%" cy="45%" r="65%"><stop offset="0%" stop-color="#6b1a26"/><stop offset="100%" stop-color="#1e0509"/></radialGradient>
+        <linearGradient id="hgold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f5e07a"/><stop offset="50%" stop-color="#c9a040"/><stop offset="100%" stop-color="#f0d060"/></linearGradient>
+        <linearGradient id="hivory" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fff8ee"/><stop offset="100%" stop-color="#e8d8c0"/></linearGradient>
+        <radialGradient id="hpetal" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#f5a0a8"/><stop offset="100%" stop-color="#b84055"/></radialGradient>
+        <linearGradient id="hheartG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f06070"/><stop offset="100%" stop-color="#9a2535"/></linearGradient>
+        <filter id="hglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="hsglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="hshadow"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0d0205" flood-opacity="0.7"/></filter>
+        <filter id="htextShadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/></filter>
+        <clipPath id="hmainClip"><circle cx="250" cy="250" r="220"/></clipPath>
+      </defs>
+      <circle cx="250" cy="250" r="240" fill="none" stroke="url(#hgold)" stroke-width="1.5" opacity="0.35"/>
+      <g stroke="url(#hgold)" opacity="0.45">
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(0 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(30 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(60 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(90 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(120 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(150 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(180 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(210 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(240 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(270 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(300 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(330 250 250)" stroke-width="1.5"/>
+      </g>
+      <g fill="url(#hgold)" filter="url(#hglow)">
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(0 250 250)"/>
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(90 250 250)"/>
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(180 250 250)"/>
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(270 250 250)"/>
+      </g>
+      <circle cx="250" cy="250" r="222" fill="url(#hbg)" filter="url(#hshadow)"/>
+      <circle cx="250" cy="250" r="212" fill="none" stroke="url(#hgold)" stroke-width="1.2" opacity="0.3"/>
+      <!-- Wedding rings -->
+      <circle cx="222" cy="200" r="28" fill="none" stroke="url(#hgold)" stroke-width="7" filter="url(#hglow)" opacity="0.95"/>
+      <path d="M208,186 A16,16 0 0,1 230,182" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="222" cy="172" rx="5" ry="6" fill="url(#hgold)" opacity="0.9"/>
+      <circle cx="278" cy="200" r="28" fill="none" stroke="url(#hgold)" stroke-width="7" filter="url(#hglow)" opacity="0.95"/>
+      <path d="M264,186 A16,16 0 0,1 286,182" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="278" cy="172" rx="5" ry="6" fill="#d0a0e0" opacity="0.9"/>
+      <path d="M248,188 Q250,196 252,188" fill="none" stroke="url(#hbg)" stroke-width="8"/>
+      <path d="M244,192 Q250,210 256,192" fill="none" stroke="url(#hgold)" stroke-width="7" opacity="0.95"/>
+      <!-- Heart -->
+      <g transform="translate(250,242)" filter="url(#hsglow)">
+        <path d="M0,-14 C-5,-24 -22,-24 -22,-8 C-22,6 0,24 0,24 C0,24 22,6 22,-8 C22,-24 5,-24 0,-14 Z" fill="url(#hheartG)" opacity="0.97"/>
+        <path d="M-10,-16 C-13,-20 -18,-18 -16,-13" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <!-- Left rose -->
+      <g transform="translate(96,250)">
+        <path d="M0,50 Q-5,20 0,0" fill="none" stroke="#2d6a30" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M-3,30 Q-18,22 -14,12 Q-4,24 -3,30 Z" fill="#3a8040" opacity="0.8"/>
+        <path d="M-1,28 Q12,18 10,8 Q2,22 -1,28 Z" fill="#3a8040" opacity="0.8"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(-40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-60 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(60 0 -10)"/>
+        <circle cx="0" cy="-10" r="6" fill="#8a2030"/>
+        <circle cx="0" cy="-10" r="3.5" fill="#b03040"/>
+      </g>
+      <!-- Right rose -->
+      <g transform="translate(404,250)">
+        <path d="M0,50 Q5,20 0,0" fill="none" stroke="#2d6a30" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M3,30 Q18,22 14,12 Q4,24 3,30 Z" fill="#3a8040" opacity="0.8"/>
+        <path d="M1,28 Q-12,18 -10,8 Q-2,22 1,28 Z" fill="#3a8040" opacity="0.8"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(-40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-60 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(60 0 -10)"/>
+        <circle cx="0" cy="-10" r="6" fill="#8a2030"/>
+        <circle cx="0" cy="-10" r="3.5" fill="#b03040"/>
+      </g>
+      <!-- Dividers -->
+      <line x1="110" y1="295" x2="390" y2="295" stroke="url(#hgold)" stroke-width="0.7" opacity="0.4"/>
+      <line x1="130" y1="390" x2="370" y2="390" stroke="url(#hgold)" stroke-width="0.7" opacity="0.4"/>
+      <!-- Text -->
+      <text x="250" y="328" text-anchor="middle" font-family="Georgia,serif" font-size="42" font-weight="bold" fill="url(#hivory)" letter-spacing="8" filter="url(#htextShadow)">COUPLE</text>
+      <line x1="170" y1="338" x2="330" y2="338" stroke="url(#hgold)" stroke-width="0.8" opacity="0.5"/>
+      <text x="250" y="362" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="url(#hgold)" letter-spacing="6">EVALUATION</text>
+      <text x="250" y="383" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="url(#hgold)" letter-spacing="4" opacity="0.7">· · ✦ · ·</text>
+      <text x="250" y="408" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(240,220,180,0.7)" letter-spacing="1.5">By Dashing Family Members</text>
+      <!-- Crown -->
+      <rect x="205" y="68" width="90" height="5" rx="2.5" fill="url(#hgold)" opacity="0.7"/>
+      <polygon points="250,42 255,58 250,68 245,58" fill="url(#hgold)" opacity="0.9" filter="url(#hglow)"/>
+      <polygon points="228,52 231,62 228,68 225,62" fill="url(#hgold)" opacity="0.8"/>
+      <polygon points="272,52 275,62 272,68 269,62" fill="url(#hgold)" opacity="0.8"/>
+      <circle cx="250" cy="50" r="4" fill="#f0d060" filter="url(#hglow)" opacity="0.95"/>
+      <circle cx="228" cy="58" r="3" fill="#e8a0b0" filter="url(#hglow)" opacity="0.85"/>
+      <circle cx="272" cy="58" r="3" fill="#e8a0b0" filter="url(#hglow)" opacity="0.85"/>
+      <!-- Sparkles -->
+      <g fill="url(#hgold)" opacity="0.6">
+        <circle cx="130" cy="230" r="2"/><circle cx="370" cy="230" r="2"/>
+        <circle cx="145" cy="340" r="1.5"/><circle cx="355" cy="340" r="1.5"/>
+      </g>
+      <circle cx="250" cy="250" r="222" fill="none" stroke="#c1666b" stroke-width="4" opacity="0.1"/>
+    </svg>
+  </div>
+  <div class="brand-tag">✦ Dashing Family Members ✦</div>
+  <h1 class="app-title">জীবনসঙ্গী মূল্যায়ন</h1>
+  <p class="subtitle">দাম্পত্য জীবনের সামগ্রিক মূল্যায়ন পদ্ধতি</p>
+</header>
+
+<!-- TOP BAR (logout) -->
+<div class="top-bar" id="topBar">
+  <div class="top-bar-info">স্বাগতম, <strong id="topBarName">—</strong></div>
+  <button class="btn-sm ghost" onclick="logout()">লগআউট ↩</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══ FLOWER CORNER DECORATIONS ══ -->
+<svg class="flower-corner tl" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#b84055">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M5,130 Q50,90 110,60 Q65,105 5,130Z" opacity="0.7"/>
+    <path d="M30,170 Q60,120 120,100 Q80,135 30,170Z" opacity="0.6"/>
+  </g>
+  <g fill="#c49a3c" opacity="0.6">
+    <circle cx="90" cy="20" r="3"/><circle cx="110" cy="35" r="2"/>
+    <circle cx="20" cy="90" r="3"/><circle cx="35" cy="110" r="2"/>
+    <circle cx="70" cy="55" r="2.5"/>
+  </g>
+</svg>
+
+<svg class="flower-corner tr" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#b84055">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M5,130 Q50,90 110,60 Q65,105 5,130Z" opacity="0.7"/>
+    <path d="M30,170 Q60,120 120,100 Q80,135 30,170Z" opacity="0.6"/>
+  </g>
+  <g fill="#c49a3c" opacity="0.6">
+    <circle cx="90" cy="20" r="3"/><circle cx="110" cy="35" r="2"/>
+    <circle cx="20" cy="90" r="3"/><circle cx="35" cy="110" r="2"/>
+  </g>
+</svg>
+
+<svg class="flower-corner bl" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#c49a3c">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M5,130 Q50,90 110,60 Q65,105 5,130Z" opacity="0.7"/>
+  </g>
+  <g fill="#b84055" opacity="0.5">
+    <circle cx="90" cy="20" r="3"/><circle cx="20" cy="90" r="3"/>
+    <circle cx="70" cy="55" r="2.5"/>
+  </g>
+</svg>
+
+<svg class="flower-corner br" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#c49a3c">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M30,170 Q60,120 120,100 Q80,135 30,170Z" opacity="0.6"/>
+  </g>
+  <g fill="#b84055" opacity="0.5">
+    <circle cx="90" cy="20" r="3"/><circle cx="20" cy="90" r="3"/>
+  </g>
+</svg>
+
+<!-- ══ LOGIN ══ -->
+<div id="loginSection">
+  <div class="ornament">— ❧ —</div><br>
+  <div class="login-card">
+    <h2>প্রবেশ করুন</h2>
+    <div class="login-tabs">
+      <button class="login-tab active" id="tabUser" onclick="switchTab('user')">👤 ব্যবহারকারী</button>
+      <button class="login-tab" id="tabAdmin" onclick="switchTab('admin')">🔐 অ্যাডমিন</button>
+    </div>
+
+    <div id="userLoginForm">
+      <div class="field-group">
+        <label>আপনার নাম</label>
+        <input type="text" id="loginName" placeholder="নাম লিখুন" />
+      </div>
+      <div class="field-group">
+        <label>আপনি কে?</label>
+        <select id="loginRole">
+          <option value="">বেছে নিন</option>
+          <option value="স্বামী">স্বামী (স্ত্রীকে মূল্যায়ন করব)</option>
+          <option value="স্ত্রী">স্ত্রী (স্বামীকে মূল্যায়ন করব)</option>
+        </select>
+      </div>
+      <div class="error-msg" id="userError"></div>
+      <button class="btn-main" onclick="loginUser()" style="margin-top:8px;">প্রবেশ করুন →</button>
+    </div>
+
+    <div id="adminLoginForm" style="display:none;">
+      <div class="field-group">
+        <label>অ্যাডমিন পাসওয়ার্ড</label>
+        <input type="password" id="adminPass" placeholder="অ্যাডমিন পাসওয়ার্ড" />
+      </div>
+      <div class="error-msg" id="adminError"></div>
+      <button class="btn-main" onclick="loginAdmin()" style="margin-top:8px;">অ্যাডমিন প্যানেল →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ INTRO (user) ══ -->
+<div id="introSection">
+  <div id="alreadyDoneBox" style="display:none">
+    <div class="already-done-card">
+      <h3>✅ আপনি ইতিমধ্যে মূল্যায়ন করেছেন</h3>
+      <p>আপনার উত্তর সংরক্ষিত আছে। নিচে আপনার ফলাফল দেখুন।</p>
+      <br>
+      <button class="btn-main" onclick="viewOwnResult()">আমার ফলাফল দেখুন →</button>
+      <button class="btn-ghost" onclick="redoQuiz()">পুনরায় মূল্যায়ন করুন</button>
+    </div>
+  </div>
+  <div id="freshIntroBox">
+    <div class="ornament">— ❧ —</div><br>
+    <div class="intro-card">
+      <h2>এই মূল্যায়নে কী আছে?</h2>
+      <p>দাম্পত্য জীবনের ১০টি গুরুত্বপূর্ণ দিক নিয়ে প্রশ্ন রয়েছে। প্রতিটি প্রশ্নে ১০ এর মধ্যে নিজে যত নম্বর উপযুক্ত মনে করেন দিন।</p>
+      <div class="q-chips">
+        <span class="q-chip">💬 যোগাযোগ</span><span class="q-chip">💖 ভালোবাসা</span>
+        <span class="q-chip">🤝 বিশ্বাস</span><span class="q-chip">🏠 সংসার</span>
+        <span class="q-chip">👨‍👩‍👧 পরিবার</span><span class="q-chip">💰 অর্থনীতি</span>
+        <span class="q-chip">🧠 মানসিক সমর্থন</span><span class="q-chip">⚖️ সম্মান</span>
+        <span class="q-chip">🌱 ব্যক্তিগত উন্নয়ন</span><span class="q-chip">🛐 ধর্ম ও নৈতিকতা</span>
+      </div>
+    </div>
+    <button class="btn-main" onclick="startQuiz()">মূল্যায়ন শুরু করুন →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<div id="quizSection">
+  <div class="progress-area">
+    <div class="user-badge" id="userBadge">👤 <span id="badgeName">—</span></div>
+    <div class="progress-top">
+      <span class="progress-q-label" id="pLabel">প্রশ্ন ১ / ১০</span>
+      <span class="progress-pct" id="pPct">০%</span>
+    </div>
+    <div class="pbar-bg"><div class="pbar-fill" id="pFill" style="width:0%"></div></div>
+  </div>
+  <div id="qArea"></div>
+  <button class="btn-main" id="nextBtn" onclick="nextQ()" disabled>পরবর্তী প্রশ্ন →</button>
+</div>
+
+<!-- ══ REVIEW ══ -->
+<div id="reviewSection" style="display:none">
+  <div class="progress-area">
+    <div class="user-badge">👤 <span id="reviewBadgeName">—</span></div>
+  </div>
+  <div class="review-header-card">
+    <div class="review-icon">📝</div>
+    <h2>আপনার উত্তর পর্যালোচনা করুন</h2>
+    <p>প্রয়োজনে যেকোনো উত্তর পরিবর্তন করুন, তারপর সাবমিট করুন।</p>
+  </div>
+  <div id="reviewList"></div>
+  <button class="btn-main" onclick="finalSubmit()">✅ চূড়ান্তভাবে সাবমিট করুন</button>
+  <button class="btn-ghost" onclick="backToQuiz()">← প্রশ্নে ফিরে যান</button>
+</div>
+
+<!-- ══ RESULT ══ -->
+<div id="resultSection">
+  <div id="publishedNotice" style="display:none" class="published-notice">
+    <div class="notice-icon">📢</div>
+    <div><p>আপনার ফলাফল লিডারবোর্ডে প্রকাশিত হয়েছে</p><small>অ্যাডমিন সবার স্কোর শেয়ার করেছেন</small></div>
+  </div>
+  <div class="result-header">
+    <div class="result-name" id="rName"></div>
+    <div class="result-title">জীবনসঙ্গী মূল্যায়ন ফলাফল</div>
+    <div class="big-score-wrap">
+      <svg viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="62" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="10"/>
+        <circle cx="75" cy="75" r="62" fill="none" stroke="url(#rg2)"
+          stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="389.6" id="rArc" stroke-dashoffset="389.6"/>
+        <defs>
+          <linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8c56d"/>
+            <stop offset="100%" stop-color="#c1666b"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="big-score-inner">
+        <div class="big-score-num" id="rNum">০</div>
+        <div class="big-score-max">/ ১০০</div>
+      </div>
+    </div>
+    <div id="vPill"></div>
+    <div class="verdict-msg" id="vMsg"></div>
+  </div>
+  <div class="breakdown-card">
+    <h3>প্রশ্নভিত্তিক বিশ্লেষণ</h3>
+    <div id="bqList"></div>
+  </div>
+  <div class="advice-card" id="adviceCard">
+    <h3><span>💡</span> পরামর্শ ও পর্যবেক্ষণ</h3>
+    <p id="adviceText"></p>
+  </div>
+  <button class="btn-ghost" onclick="printResult()">🖨️ ফলাফল প্রিন্ট করুন</button>
+  <button class="btn-ghost" id="viewLbBtn" style="display:none" onclick="showLeaderboard()">🏆 লিডারবোর্ড দেখুন</button>
+  <p class="disclaimer">এই মূল্যায়ন শুধুমাত্র আত্মসচেতনতা ও পারস্পরিক বোঝাপড়ার জন্য।<br>জটিল সম্পর্কে পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।</p>
+  <div class="footer-brand">✦ Dashing Family ✦</div>
+</div>
+
+<!-- ══ ADMIN PANEL ══ -->
+<div id="adminSection">
+  <div class="admin-header">
+    <h2>🔐 অ্যাডমিন প্যানেল</h2>
+    <p>সকল মূল্যায়নের তথ্য ও বিশ্লেষণ</p>
+  </div>
+
+  <!-- PUBLISH TOGGLE -->
+  <div class="publish-bar">
+    <div class="publish-bar-info">
+      <h4>📢 লিডারবোর্ড প্রকাশ</h4>
+      <p>চালু করলে সব ব্যবহারকারী স্কোর র‍্যাংকিং দেখতে পাবে</p>
+    </div>
+    <div class="toggle-wrap">
+      <span class="toggle-label" id="publishLabel">বন্ধ</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="publishToggle" onchange="togglePublish()">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="stats-row" id="statsRow">
+    <div class="stat-box"><div class="stat-num" id="statTotal">০</div><div class="stat-lbl">মোট মূল্যায়ন</div></div>
+    <div class="stat-box"><div class="stat-num" id="statAvg">০</div><div class="stat-lbl">গড় নম্বর</div></div>
+    <div class="stat-box"><div class="stat-num" id="statHigh">০</div><div class="stat-lbl">সর্বোচ্চ</div></div>
+  </div>
+
+  <!-- avg by topic -->
+  <div class="submissions-card" id="avgCard" style="display:none">
+    <h3>📊 বিষয়ভিত্তিক গড় নম্বর</h3>
+    <div class="avg-chart" id="avgChart"></div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterSubs('all',this)">সবাই</button>
+    <button class="filter-btn" onclick="filterSubs('স্বামী',this)">স্বামী</button>
+    <button class="filter-btn" onclick="filterSubs('স্ত্রী',this)">স্ত্রী</button>
+  </div>
+
+  <div class="submissions-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h3 style="margin-bottom:0">📋 জমা দেওয়া মূল্যায়ন</h3>
+      <button class="del-all-btn" onclick="confirmDeleteAll()">🗑️ সব মুছুন</button>
+    </div>
+    <div id="subsList"></div>
+  </div>
+
+  <!-- Admin Leaderboard PDF -->
+  <div class="lb-generate-card">
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:2rem;margin-bottom:8px">🏆</div>
+      <h3>লিডারবোর্ড তৈরি করুন</h3>
+      <p>সকলের ফলাফল র‍্যাংকিং আকারে প্রিন্ট বা PDF করুন</p>
+    </div>
+    <button class="btn-main" onclick="openAdminLeaderboard()">📄 লিডারবোর্ড দেখুন ও প্রিন্ট করুন</button>
+  </div>
+</div>
+
+<!-- ══ LEADERBOARD (user view) ══ -->
+<div id="leaderboardSection">
+  <div class="lb-header">
+    <h2>🏆 লিডারবোর্ড</h2>
+    <p>Dashing Family — জীবনসঙ্গী মূল্যায়ন</p>
+    <div class="lb-published-date" id="lbPublishedDate"></div>
+  </div>
+  <div class="lb-card">
+    <h3>স্কোর র‍্যাংকিং</h3>
+    <div id="lbList"></div>
+  </div>
+  <button class="btn-ghost" onclick="hideLb()">← ফিরে যান</button>
+</div>
+
+<!-- ══ ADMIN LEADERBOARD (printable) ══ -->
+<div id="adminLbSection" style="display:none">
+  <div class="alb-print-bar">
+    <button class="btn-sm" onclick="printAdminLb()">🖨️ প্রিন্ট / PDF সেভ করুন</button>
+    <button class="btn-sm ghost" onclick="closeAdminLb()">✕ বন্ধ করুন</button>
+  </div>
+
+  <div id="adminLbContent">
+    <!-- Print header -->
+    <div class="alb-header">
+      <div class="alb-brand">✦ Dashing Family ✦</div>
+      <h1 class="alb-title">জীবনসঙ্গী মূল্যায়ন</h1>
+      <p class="alb-subtitle">চূড়ান্ত ফলাফল ও লিডারবোর্ড</p>
+      <div class="alb-date" id="albDate"></div>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="alb-stats-row" id="albStats"></div>
+
+    <!-- Ranked table -->
+    <div class="alb-section">
+      <h2 class="alb-section-title">🏆 স্কোর র‍্যাংকিং</h2>
+      <div id="albRankList"></div>
+    </div>
+
+    <!-- Per-person breakdown -->
+    <div class="alb-section">
+      <h2 class="alb-section-title">📊 বিস্তারিত বিশ্লেষণ</h2>
+      <div id="albBreakdown"></div>
+    </div>
+
+    <div class="alb-footer">
+      এই মূল্যায়ন শুধুমাত্র আত্মসচেতনতা ও পারস্পরিক বোঝাপড়ার জন্য।
+      জটিল সম্পর্কে পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।<br>
+      <strong>✦ Dashing Family ✦</strong>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <h2 id="modalTitle">মূল্যায়ন বিবরণ</h2>
+    <div class="modal-result-header">
+      <div class="modal-score-big" id="modalScore">—</div>
+      <div class="modal-score-label">/ ১০০</div>
+      <div id="modalVerdict" style="margin-top:8px;position:relative;"></div>
+    </div>
+    <div id="modalBreakdown"></div>
+    <button class="modal-close" onclick="document.getElementById('detailModal').classList.remove('open')">✕ বন্ধ করুন</button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════
+const ADMIN_PASS = 'admin2024';
+const SESSION_KEY = 'df_session_v2';
+
+// Firebase refs
+const subsRef = db.ref('submissions');
+const publishRef = db.ref('published');
+
+// In-memory cache (synced from Firebase)
+let _submissions = [];
+let _published = null;
+
+// Load submissions from Firebase on startup
+subsRef.on('value', snap => {
+  const data = snap.val();
+  _submissions = data ? Object.values(data) : [];
+  // Re-render admin if open
+  if (document.getElementById('adminSection').style.display === 'block') {
+    renderAdmin(currentFilter);
+  }
+  // Re-render leaderboard if open
+  if (document.getElementById('leaderboardSection').style.display === 'block') {
+    renderLeaderboard();
+  }
+});
+
+publishRef.on('value', snap => {
+  _published = snap.val();
+  // Update publish toggle if admin panel open
+  const tog = document.getElementById('publishToggle');
+  if (tog) {
+    tog.checked = !!_published;
+    document.getElementById('publishLabel').textContent = _published ? 'চালু' : 'বন্ধ';
+  }
+  // Show/hide published notice in result
+  const notice = document.getElementById('publishedNotice');
+  const lbBtn = document.getElementById('viewLbBtn');
+  if (notice) notice.style.display = _published ? 'flex' : 'none';
+  if (lbBtn) lbBtn.style.display = _published ? 'block' : 'none';
+});
+
+// ══════════════════════════════════
+//  QUESTIONS
+// ══════════════════════════════════
+const questions = [
+  { num:1,  topic:'💬 যোগাযোগ ও কথোপকথন',      q:'আপনার সঙ্গী কি মনোযোগ দিয়ে শোনেন এবং মনের কথা খোলামেলাভাবে বলতে পারেন?', hint:'যেমন: ঝগড়া হলে আলোচনা করে সমাধান, অনুভূতি ভাগ করে নেওয়া', meanings:['খুবই দুর্বল','চমৎকার'] },
+  { num:2,  topic:'💖 ভালোবাসা ও আবেগ',          q:'সঙ্গী কি ভালোবাসা, যত্ন ও আবেগের প্রকাশ নিয়মিত করেন?', hint:'যেমন: ছোট ছোট মনোযোগ, সহানুভূতি, কঠিন সময়ে পাশে থাকা', meanings:['খুবই দুর্বল','চমৎকার'] },
+  { num:3,  topic:'🤝 বিশ্বাস ও সততা',           q:'আপনার সঙ্গী কি সম্পূর্ণ বিশ্বস্ত এবং সৎ? কথা ও কাজে মিল আছে?', hint:'যেমন: প্রতিশ্রুতি রাখা, লুকিয়ে কিছু না করা, স্বচ্ছতা বজায় রাখা', meanings:['একদমই না','সম্পূর্ণ বিশ্বস্ত'] },
+  { num:4,  topic:'🏠 সংসার ও গৃহস্থালি',         q:'ঘরের কাজ, রান্না, সন্তান পালন ও সংসারের দায়িত্বে কি সঠিক অংশগ্রহণ করেন?', hint:'যেমন: ঘরের কাজে সহযোগিতা, সন্তানের পড়া-যত্ন, বাজার-রান্নায় সাহায্য', meanings:['কোনো সহযোগিতা নেই','সম্পূর্ণ সহযোগী'] },
+  { num:5,  topic:'👨‍👩‍👧 পরিবার ও আত্মীয়তা',       q:'আপনার পরিবার ও আত্মীয়দের সাথে সঙ্গীর ব্যবহার ও সম্পর্ক কেমন?', hint:'যেমন: মা-বাবার সাথে সদাচার, আত্মীয়দের সম্মান, পারিবারিক অনুষ্ঠানে উপস্থিতি', meanings:['খুবই খারাপ','অত্যন্ত ভালো'] },
+  { num:6,  topic:'💰 আর্থিক দায়িত্ব ও পরিকল্পনা', q:'পরিবারের আর্থিক বিষয়ে সঙ্গী কতটা দায়িত্বশীল এবং পরিকল্পিত?', hint:'যেমন: খরচ নিয়ন্ত্রণ, ভবিষ্যতের সঞ্চয়, ঋণ পরিশোধ, সংসারের চাহিদা পূরণ', meanings:['সম্পূর্ণ দায়িত্বহীন','অত্যন্ত দায়িত্বশীল'] },
+  { num:7,  topic:'🧠 মানসিক সমর্থন ও বোঝাপড়া',  q:'মানসিক চাপ, দুঃখ বা কষ্টের সময়ে সঙ্গী কি পাশে থাকেন এবং বোঝেন?', hint:'যেমন: মন খারাপ হলে সাথে থাকা, সমস্যায় উপদেশ দেওয়া, রাগ না করে শোনা', meanings:['একদমই না','সবসময় পাশে থাকেন'] },
+  { num:8,  topic:'⚖️ সম্মান ও মর্যাদা',           q:'আপনার সঙ্গী কি আপনাকে সমান মর্যাদা, সম্মান ও স্বাধীনতা দেন?', hint:'যেমন: মতামতকে গুরুত্ব দেওয়া, অপমান না করা, সিদ্ধান্তে অংশীদার করা', meanings:['মোটেও না','পূর্ণ সম্মান'] },
+  { num:9,  topic:'🌱 ব্যক্তিগত উন্নয়ন ও লক্ষ্য', q:'আপনার স্বপ্ন, ক্যারিয়ার ও ব্যক্তিগত উন্নয়নে সঙ্গী কি সহায়তা করেন?', hint:'যেমন: পড়াশোনা বা কাজে উৎসাহ দেওয়া, শখকে সম্মান করা, নতুন কিছু শিখতে সাহায্য করা', meanings:['কোনো সহায়তা নেই','সম্পূর্ণ সহায়তা'] },
+  { num:10, topic:'🛐 ধর্ম, নৈতিকতা ও চরিত্র',    q:'সঙ্গীর ধর্মীয় মূল্যবোধ, নৈতিকতা ও চরিত্র সম্পর্কে আপনি কতটা সন্তুষ্ট?', hint:'যেমন: নামাজ/ইবাদত, সত্যবাদিতা, ন্যায়পরায়ণতা, মানুষের সাথে ভালো আচরণ', meanings:['মোটেও সন্তুষ্ট নই','সম্পূর্ণ সন্তুষ্ট'] },
+];
+const scoreLabels = { 1:'একদমই না', 2:'খুব খারাপ', 3:'খারাপ', 4:'মোটামুটি কম', 5:'মাঝামাঝি', 6:'মোটামুটি ভালো', 7:'ভালো', 8:'বেশ ভালো', 9:'খুব ভালো', 10:'চমৎকার!' };
+const advices = [
+  'যোগাযোগ উন্নত করতে প্রতিদিন অন্তত ১৫ মিনিট শুধু একে অপরকে শুনুন।',
+  'ছোট ছোট মনোযোগ ও প্রশংসা ভালোবাসা টিকিয়ে রাখতে সাহায্য করে।',
+  'বিশ্বাস হারালে সম্পর্ক ভেঙে পড়ে। সব ক্ষেত্রে স্বচ্ছতা রাখুন।',
+  'সংসারের কাজে সমান অংশীদারিত্ব দাম্পত্যকে সুখী রাখে।',
+  'পারিবারিক সম্পর্ক টিকিয়ে রাখতে একে অপরের পরিবারকে শ্রদ্ধা করুন।',
+  'আর্থিক পরিকল্পনা একসাথে করুন। মাসিক বাজেট তৈরি করুন।',
+  'মানসিক সমর্থন দেওয়া মানে সমাধান দেওয়া নয়, শুধু পাশে থাকা।',
+  'সম্মান সম্পর্কের ভিত্তি। কখনো সবার সামনে অপমান করবেন না।',
+  'একে অপরের স্বপ্নকে সমর্থন করুন। সঙ্গীর ক্যারিয়ারে উৎসাহ দিন।',
+  'ধর্মীয় ও নৈতিক মূল্যবোধ একসাথে চর্চা করুন।',
+];
+
+// ══════════════════════════════════
+//  STORAGE HELPERS (Firebase)
+// ══════════════════════════════════
+function getSubmissions() {
+  return _submissions;
+}
+async function saveSubmission(entry) {
+  await subsRef.child(entry.id).set(entry);
+}
+async function deleteSubmission(id) {
+  await subsRef.child(id).remove();
+}
+
+function getSession() {
+  try { return JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null'); } catch(e){ return null; }
+}
+function setSession(obj) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(obj)); }
+function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
+
+function isPublished() {
+  return _published;
+}
+async function setPublished(val) {
+  if (val) await publishRef.set({ on: true, date: new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'}) });
+  else await publishRef.remove();
+}
+
+function makeUserId(name, role) {
+  return (name.trim().toLowerCase() + '_' + role).replace(/\s+/g,'_');
+}
+
+function findSubmission(name, role) {
+  const id = makeUserId(name, role);
+  return _submissions.find(s => s.id === id) || null;
+}
+
+// ══════════════════════════════════
+//  QUIZ STATE
+// ══════════════════════════════════
+let cur = 0, answers = [], uName = '', uRole = '';
+
+// ══════════════════════════════════
+//  LOGIN
+// ══════════════════════════════════
+function switchTab(t) {
+  document.getElementById('tabUser').classList.toggle('active', t==='user');
+  document.getElementById('tabAdmin').classList.toggle('active', t==='admin');
+  document.getElementById('userLoginForm').style.display = t==='user' ? 'block' : 'none';
+  document.getElementById('adminLoginForm').style.display = t==='admin' ? 'block' : 'none';
+}
+
+function loginUser() {
+  const name = document.getElementById('loginName').value.trim();
+  const role = document.getElementById('loginRole').value;
+  document.getElementById('userError').textContent = '';
+  if (!name) { document.getElementById('userError').textContent = 'নাম লিখুন।'; return; }
+  if (!role) { document.getElementById('userError').textContent = 'ভূমিকা বেছে নিন।'; return; }
+  uName = name; uRole = role;
+  setSession({ type:'user', name, role });
+  showUserSection();
+}
+
+function loginAdmin() {
+  const pass = document.getElementById('adminPass').value;
+  document.getElementById('adminError').textContent = '';
+  if (pass !== ADMIN_PASS) { document.getElementById('adminError').textContent = 'পাসওয়ার্ড ভুল।'; return; }
+  setSession({ type:'admin' });
+  showAdminSection();
+}
+
+function logout() {
+  clearSession();
+  cur=0; answers=[]; uName=''; uRole='';
+  document.getElementById('loginSection').style.display='block';
+  document.getElementById('introSection').style.display='none';
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('adminSection').style.display='none';
+  document.getElementById('adminLbSection').style.display='none';
+  document.getElementById('leaderboardSection').style.display='none';
+  document.getElementById('topBar').classList.remove('visible');
+  document.getElementById('loginName').value='';
+  document.getElementById('loginRole').value='';
+  document.getElementById('adminPass').value='';
+}
+
+// ══════════════════════════════════
+//  SHOW SECTIONS
+// ══════════════════════════════════
+function showUserSection() {
+  document.getElementById('loginSection').style.display='none';
+  document.getElementById('adminSection').style.display='none';
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
+  document.getElementById('resultSection').style.display='none';
+
+  document.getElementById('topBar').classList.add('visible');
+  document.getElementById('topBarName').textContent = uName + ' (' + uRole + ')';
+
+  const existing = findSubmission(uName, uRole);
+  document.getElementById('introSection').style.display='block';
+  if (existing) {
+    document.getElementById('alreadyDoneBox').style.display='block';
+    document.getElementById('freshIntroBox').style.display='none';
+  } else {
+    document.getElementById('alreadyDoneBox').style.display='none';
+    document.getElementById('freshIntroBox').style.display='block';
+  }
+}
+
+function showAdminSection() {
+  document.getElementById('loginSection').style.display='none';
+  document.getElementById('introSection').style.display='none';
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('leaderboardSection').style.display='none';
+  document.getElementById('adminLbSection').style.display='none';
+  document.getElementById('adminSection').style.display='block';
+  document.getElementById('topBar').classList.add('visible');
+  document.getElementById('topBarName').textContent='অ্যাডমিন';
+  // sync toggle
+  const pub = isPublished();
+  document.getElementById('publishToggle').checked = !!pub;
+  document.getElementById('publishLabel').textContent = pub ? 'চালু' : 'বন্ধ';
+  renderAdmin('all');
+}
+
+// ══════════════════════════════════
+//  QUIZ
+// ══════════════════════════════════
+function startQuiz() {
+  cur=0; answers=[];
+  document.getElementById('introSection').style.display='none';
+  document.getElementById('quizSection').style.display='block';
+  document.getElementById('badgeName').textContent = uName + ' (' + uRole + ')';
+  renderQ();
+}
+
+async function redoQuiz() {
+  const id = makeUserId(uName, uRole);
+  await deleteSubmission(id);
+  cur=0; answers=[];
+  document.getElementById('alreadyDoneBox').style.display='none';
+  document.getElementById('freshIntroBox').style.display='block';
+}
+
+function viewOwnResult() {
+  const existing = findSubmission(uName, uRole);
+  if (!existing) return;
+  answers = existing.answers;
+  document.getElementById('introSection').style.display='none';
+  displayResult(existing.answers, uName, uRole);
+}
+
+function renderQ() {
+  const q = questions[cur];
+  const pct = Math.round((cur/questions.length)*100);
+  document.getElementById('pLabel').textContent = `প্রশ্ন ${cur+1} / ${questions.length}`;
+  document.getElementById('pPct').textContent = pct+'%';
+  document.getElementById('pFill').style.width = pct+'%';
+  document.getElementById('nextBtn').disabled = answers[cur]===undefined;
+  let btnHtml='';
+  for(let i=1;i<=10;i++){
+    btnHtml+=`<button class="score-btn ${answers[cur]===i?'sel':''}" onclick="pickScore(${i})">${i}</button>`;
+  }
+  document.getElementById('qArea').innerHTML=`
+    <div class="q-card">
+      <div class="q-num">প্রশ্ন ${cur+1} • ${q.topic}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="q-hint">${q.hint}</div>
+      <div class="score-slider-wrap">
+        <div class="score-track">${btnHtml}</div>
+        <div class="score-meaning"><span>১ = ${q.meanings[0]}</span><span>১০ = ${q.meanings[1]}</span></div>
+      </div>
+      <div class="chosen-label" id="chosenLabel">${answers[cur]!==undefined?`আপনি দিয়েছেন: <b>${answers[cur]}</b> — ${scoreLabels[answers[cur]]}`:'নম্বর বেছে নিন'}</div>
+    </div>
+  `;
+}
+
+function pickScore(v){
+  answers[cur]=v;
+  document.getElementById('nextBtn').disabled=false;
+  document.querySelectorAll('.score-btn').forEach((b,i)=>b.classList.toggle('sel',i+1===v));
+  document.getElementById('chosenLabel').innerHTML=`আপনি দিয়েছেন: <b>${v}</b> — ${scoreLabels[v]}`;
+}
+
+function nextQ(){
+  if(answers[cur]===undefined) return;
+  if(cur<questions.length-1){ cur++; renderQ(); }
+  else showReview();
+}
+
+function showReview(){
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='block';
+  document.getElementById('reviewBadgeName').textContent = uName + ' (' + uRole + ')';
+  renderReview();
+}
+
+function renderReview(){
+  let html='';
+  questions.forEach((q,i)=>{
+    const sc = answers[i];
+    let btnHtml='';
+    for(let v=1;v<=10;v++){
+      btnHtml+=`<button class="review-score-btn ${sc===v?'sel':''}" onclick="editScore(${i},${v})">${v}</button>`;
+    }
+    html+=`<div class="review-item" id="ritem-${i}">
+      <div class="review-item-top">
+        <div style="flex:1">
+          <div class="review-q-topic">${q.topic}</div>
+          <div class="review-q-text">${q.q}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="review-score-display">
+            <div class="review-score-num" id="rscore-${i}">${sc}</div>
+            <div class="review-score-label" id="rscoreLabel-${i}">${scoreLabels[sc]}</div>
+          </div>
+          <button class="btn-edit" id="redit-${i}" onclick="toggleEdit(${i})">✏️ এডিট</button>
+        </div>
+      </div>
+      <div class="review-edit-area" id="redit-area-${i}">
+        <div class="review-score-track">${btnHtml}</div>
+        <div style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:4px">
+          <span>১ = ${q.meanings[0]}</span> &nbsp;•&nbsp; <span>১০ = ${q.meanings[1]}</span>
+        </div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('reviewList').innerHTML=html;
+}
+
+function toggleEdit(i){
+  const item = document.getElementById(`ritem-${i}`);
+  const btn = document.getElementById(`redit-${i}`);
+  const isEditing = item.classList.contains('editing');
+  if(isEditing){
+    item.classList.remove('editing');
+    btn.textContent='✏️ এডিট';
+    btn.classList.remove('done');
+  } else {
+    item.classList.add('editing');
+    btn.textContent='✔ সম্পন্ন';
+    btn.classList.add('done');
+  }
+}
+
+function editScore(i, v){
+  answers[i]=v;
+  document.getElementById(`rscore-${i}`).textContent=v;
+  document.getElementById(`rscoreLabel-${i}`).textContent=scoreLabels[v];
+  // update buttons
+  const area = document.getElementById(`redit-area-${i}`);
+  area.querySelectorAll('.review-score-btn').forEach((b,idx)=>{
+    b.classList.toggle('sel', idx+1===v);
+  });
+}
+
+function backToQuiz(){
+  cur=questions.length-1;
+  document.getElementById('reviewSection').style.display='none';
+  document.getElementById('quizSection').style.display='block';
+  renderQ();
+}
+
+async function finalSubmit(){
+  const btn = document.querySelector('#reviewSection .btn-main');
+  btn.disabled=true;
+  btn.textContent='সাবমিট হচ্ছে...';
+  const id = makeUserId(uName, uRole);
+  const entry = {
+    id, name:uName, role:uRole,
+    answers:[...answers],
+    total: answers.reduce((a,b)=>a+b,0),
+    date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
+  };
+  await saveSubmission(entry);
+  document.getElementById('reviewSection').style.display='none';
+  displayResult(answers, uName, uRole);
+}
+
+// ══════════════════════════════════
+//  RESULT DISPLAY
+// ══════════════════════════════════
+function displayResult(ans, name, role){
+  document.getElementById('resultSection').style.display='block';
+  document.getElementById('resultSection').classList.add('show');
+
+  // published notice (driven by Firebase realtime listener)
+  const pub = isPublished();
+  document.getElementById('publishedNotice').style.display = pub ? 'flex' : 'none';
+  document.getElementById('viewLbBtn').style.display = pub ? 'block' : 'none';
+
+  const total = ans.reduce((a,b)=>a+b,0);
+  const evaluatee = role==='স্বামী'?'স্ত্রীর':'স্বামীর';
+  document.getElementById('rName').textContent = name+' কর্তৃক '+evaluatee+' মূল্যায়ন';
+
+  let n=0;
+  const iv=setInterval(()=>{
+    n=Math.min(n+2,total);
+    document.getElementById('rNum').textContent=n;
+    document.getElementById('rArc').style.strokeDashoffset=389.6-(389.6*n/100);
+    if(n>=total) clearInterval(iv);
+  },20);
+
+  let pc,pt,pm;
+  if(total>=85)      {pc='v-excellent';pt='🌟 অসাধারণ সম্পর্ক!';pm='আপনার জীবনসঙ্গী সত্যিই অনন্য। এই সুন্দর দাম্পত্য জীবনকে আরও সুন্দর করে গড়ে তুলুন।';}
+  else if(total>=70) {pc='v-good';pt='👍 ভালো সম্পর্ক';pm='সম্পর্ক সামগ্রিকভাবে সুন্দর। কিছু দিকে আরও মনোযোগ দিলে আরও চমৎকার হবে।';}
+  else if(total>=50) {pc='v-average';pt='⚠️ উন্নতির সুযোগ আছে';pm='সম্পর্কে ভালো দিক আছে, তবে কিছু সমস্যাও আছে। খোলামেলা আলোচনা করুন।';}
+  else               {pc='v-poor';pt='🆘 মনোযোগ জরুরি';pm='সম্পর্কে উল্লেখযোগ্য চ্যালেঞ্জ আছে। পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।';}
+
+  document.getElementById('vPill').innerHTML=`<span class="verdict-pill ${pc}">${pt}</span>`;
+  document.getElementById('vMsg').textContent=pm;
+
+  let bqHtml='';
+  questions.forEach((q,i)=>{
+    const sc=ans[i]||0;
+    bqHtml+=`<div class="bq-row">
+      <div class="bq-num">${i+1}</div>
+      <div class="bq-text">${q.topic}<br><span style="font-size:0.75rem;opacity:0.7">${q.q.substring(0,45)}...</span></div>
+      <div class="bq-score">${sc}/১০</div>
+    </div>`;
+  });
+  document.getElementById('bqList').innerHTML=bqHtml;
+
+  const minIdx=ans.indexOf(Math.min(...ans));
+  document.getElementById('adviceText').textContent=`সবচেয়ে কম নম্বর পেয়েছে "${questions[minIdx].topic}" (${ans[minIdx]}/১০) — ${advices[minIdx]}`;
+}
+
+function printResult(){ window.print(); }
+
+// ══════════════════════════════════
+//  PUBLISH & LEADERBOARD
+// ══════════════════════════════════
+async function togglePublish(){
+  const on = document.getElementById('publishToggle').checked;
+  await setPublished(on);
+  document.getElementById('publishLabel').textContent = on ? 'চালু' : 'বন্ধ';
+}
+
+function showLeaderboard(){
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('leaderboardSection').style.display='block';
+  renderLeaderboard();
+}
+
+function hideLb(){
+  document.getElementById('leaderboardSection').style.display='none';
+  document.getElementById('resultSection').style.display='block';
+}
+
+function renderLeaderboard(){
+  const pub = isPublished();
+  if(pub && pub.date){
+    document.getElementById('lbPublishedDate').textContent = 'প্রকাশিত: ' + pub.date;
+  }
+  const subs = getSubmissions();
+  const sorted = [...subs].sort((a,b)=>b.total-a.total);
+  const medals = ['🥇','🥈','🥉'];
+  let html = '';
+  sorted.forEach((s, i) => {
+    const rankClass = i<3 ? `rank-${i+1}` : '';
+    const medal = i<3 ? medals[i] : '';
+    html += `<div class="lb-row ${rankClass}">
+      <div class="lb-rank">${i+1}</div>
+      <div class="lb-info">
+        <div class="lb-name">${s.name}</div>
+        <span class="lb-role-tag">${s.role}</span>
+      </div>
+      <div class="lb-score-col">
+        <div class="lb-score-num">${s.total}</div>
+        <div class="lb-score-max">/ ১০০</div>
+      </div>
+      <div class="lb-medal">${medal}</div>
+    </div>`;
+  });
+  document.getElementById('lbList').innerHTML = html || '<div class="empty-state">কোনো তথ্য নেই।</div>';
+}
+
+// ══════════════════════════════════
+//  ADMIN LEADERBOARD PDF
+// ══════════════════════════════════
+function openAdminLeaderboard(){
+  const subs = getSubmissions();
+  if(subs.length === 0){ alert('কোনো মূল্যায়ন নেই।'); return; }
+
+  // Hide all, show admin lb
+  document.getElementById('adminSection').style.display='none';
+  document.getElementById('adminLbSection').style.display='block';
+
+  // Date
+  document.getElementById('albDate').textContent =
+    'তৈরির তারিখ: ' + new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'});
+
+  const sorted = [...subs].sort((a,b)=>b.total-a.total);
+  const medals = ['🥇','🥈','🥉'];
+  const rankClasses = ['r1','r2','r3'];
+
+  // Stats
+  const avg = Math.round(subs.reduce((a,s)=>a+s.total,0)/subs.length);
+  const high = Math.max(...subs.map(s=>s.total));
+  const low  = Math.min(...subs.map(s=>s.total));
+  document.getElementById('albStats').innerHTML=`
+    <div class="alb-stat"><div class="alb-stat-num">${subs.length}</div><div class="alb-stat-lbl">মোট অংশগ্রহণকারী</div></div>
+    <div class="alb-stat"><div class="alb-stat-num">${avg}</div><div class="alb-stat-lbl">গড় স্কোর</div></div>
+    <div class="alb-stat"><div class="alb-stat-num">${high}</div><div class="alb-stat-lbl">সর্বোচ্চ স্কোর</div></div>
+  `;
+
+  // Rank list
+  let rankHtml='';
+  sorted.forEach((s,i)=>{
+    const pct = s.total;
+    const rc = i<3 ? rankClasses[i] : '';
+    const medal = i<3 ? medals[i] : '';
+    let verdict='';
+    if(s.total>=85) verdict='🌟 অসাধারণ';
+    else if(s.total>=70) verdict='👍 ভালো';
+    else if(s.total>=50) verdict='⚠️ মাঝারি';
+    else verdict='🆘 দুর্বল';
+    rankHtml+=`<div class="alb-rank-row ${rc}">
+      <div class="alb-rank-num">${i+1}</div>
+      <div class="alb-rank-info">
+        <div class="alb-rank-name">${s.name}</div>
+        <span class="alb-rank-role">${s.role}</span>
+      </div>
+      <div class="alb-rank-bar-wrap">
+        <div class="alb-rank-bar-bg"><div class="alb-rank-bar" style="width:${pct}%"></div></div>
+        <div style="font-size:0.65rem;color:var(--muted);margin-top:2px;text-align:center">${verdict}</div>
+      </div>
+      <div class="alb-rank-score">${s.total}<span>/১০০</span></div>
+      <div class="alb-medal">${medal}</div>
+    </div>`;
+  });
+  document.getElementById('albRankList').innerHTML=rankHtml;
+
+  // Per-person breakdown
+  let bdHtml='';
+  sorted.forEach((s,i)=>{
+    let pc,pt;
+    if(s.total>=85){pc='v-excellent';pt='🌟 অসাধারণ';}
+    else if(s.total>=70){pc='v-good';pt='👍 ভালো';}
+    else if(s.total>=50){pc='v-average';pt='⚠️ উন্নতির সুযোগ';}
+    else{pc='v-poor';pt='🆘 মনোযোগ জরুরি';}
+
+    let qHtml='';
+    questions.forEach((q,qi)=>{
+      const sc=s.answers[qi]||0;
+      qHtml+=`<div class="alb-q-row">
+        <div class="alb-q-topic">${q.topic}</div>
+        <div class="alb-q-bar-bg"><div class="alb-q-bar" style="width:${sc*10}%"></div></div>
+        <div class="alb-q-score">${sc}/১০</div>
+      </div>`;
+    });
+
+    bdHtml+=`<div class="alb-person-card">
+      <div class="alb-person-head">
+        <div>
+          <div class="alb-person-name">${i+1}. ${s.name}</div>
+          <div class="alb-person-role">${s.role} • ${s.date}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="alb-person-score">${s.total}/১০০</div>
+          <div class="alb-person-verdict">${pt}</div>
+        </div>
+      </div>
+      <div class="alb-q-rows">${qHtml}</div>
+    </div>`;
+  });
+  document.getElementById('albBreakdown').innerHTML=bdHtml;
+}
+
+function printAdminLb(){
+  const content = document.getElementById('adminLbContent').innerHTML;
+  const printWin = window.open('', '_blank');
+  printWin.document.write(`<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জীবনসঙ্গী মূল্যায়ন — লিডারবোর্ড</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700;900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hind Siliguri',sans-serif;background:#fff;color:#2c1810;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .alb-header{background:linear-gradient(135deg,#4a1520,#7b2d35);padding:36px 28px;text-align:center;position:relative}
+  .alb-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.25),transparent 65%)}
+  .alb-brand{font-size:0.75rem;letter-spacing:4px;color:#e8c56d;margin-bottom:8px;position:relative}
+  .alb-title{font-family:'Noto Serif Bengali',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:6px;position:relative}
+  .alb-subtitle{font-size:0.9rem;color:rgba(255,255,255,0.7);position:relative}
+  .alb-date{font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:8px;position:relative}
+  .alb-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#f0e8e0;border-bottom:1px solid #f0e8e0}
+  .alb-stat{background:#fff;padding:18px 12px;text-align:center}
+  .alb-stat-num{font-family:'Noto Serif Bengali',serif;font-size:1.8rem;font-weight:900;color:#7b2d35}
+  .alb-stat-lbl{font-size:0.72rem;color:#7a5c52;margin-top:3px}
+  .alb-section{padding:24px 24px 8px}
+  .alb-section-title{font-family:'Noto Serif Bengali',serif;font-size:1rem;color:#7b2d35;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e8c4b8}
+  .alb-rank-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;margin-bottom:8px;border:1.5px solid #f0e0d8;background:#fdf6ee;page-break-inside:avoid;break-inside:avoid}
+  .alb-rank-row.r1{background:linear-gradient(135deg,#fffbe8,#fff8dc);border-color:#c49a3c}
+  .alb-rank-row.r2{background:linear-gradient(135deg,#f5f5f5,#ececec);border-color:#bbb}
+  .alb-rank-row.r3{background:linear-gradient(135deg,#fff0e8,#ffe8d8);border-color:#c87c50}
+  .alb-rank-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.9rem;flex-shrink:0;background:#e8c4b8;color:#7b2d35}
+  .alb-rank-row.r1 .alb-rank-num{background:linear-gradient(135deg,#c49a3c,#e8c56d);color:#fff}
+  .alb-rank-row.r2 .alb-rank-num{background:linear-gradient(135deg,#888,#bbb);color:#fff}
+  .alb-rank-row.r3 .alb-rank-num{background:linear-gradient(135deg,#a0522d,#cd853f);color:#fff}
+  .alb-rank-info{flex:1}
+  .alb-rank-name{font-family:'Noto Serif Bengali',serif;font-weight:700;color:#7b2d35;font-size:0.95rem}
+  .alb-rank-role{font-size:0.72rem;color:#7a5c52;background:#e8c4b8;padding:2px 8px;border-radius:99px;display:inline-block;margin-top:2px}
+  .alb-rank-score{font-family:'Noto Serif Bengali',serif;font-size:1.5rem;font-weight:900;color:#7b2d35;flex-shrink:0}
+  .alb-rank-score span{font-size:0.7rem;color:#7a5c52;font-weight:400}
+  .alb-rank-bar-wrap{width:80px;flex-shrink:0}
+  .alb-rank-bar-bg{height:6px;border-radius:99px;background:#e8c4b8;overflow:hidden}
+  .alb-rank-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,#c1666b,#c49a3c)}
+  .alb-medal{font-size:1.4rem;flex-shrink:0;width:26px;text-align:center}
+  .alb-person-card{border:1px solid #f0e0d8;border-radius:14px;margin-bottom:16px;overflow:hidden;page-break-inside:avoid;break-inside:avoid}
+  .alb-person-head{background:linear-gradient(135deg,#7b2d35,#4a1520);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+  .alb-person-name{font-family:'Noto Serif Bengali',serif;color:#fff;font-weight:700;font-size:0.95rem}
+  .alb-person-role{font-size:0.72rem;color:#e8c56d}
+  .alb-person-score{font-family:'Noto Serif Bengali',serif;font-size:1.3rem;font-weight:900;color:#fff}
+  .alb-person-verdict{font-size:0.72rem;color:#e8c56d;text-align:right}
+  .alb-q-rows{padding:10px 14px}
+  .alb-q-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dashed #f0e0d8}
+  .alb-q-row:last-child{border:none}
+  .alb-q-topic{font-size:0.78rem;color:#7a5c52;flex:1}
+  .alb-q-bar-bg{width:80px;height:5px;border-radius:99px;background:#f0e0d8;overflow:hidden;flex-shrink:0}
+  .alb-q-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,#c1666b,#c49a3c)}
+  .alb-q-score{font-size:0.8rem;font-weight:700;color:#c1666b;min-width:30px;text-align:right}
+  .alb-footer{background:#fdf6ee;border-top:1px solid #f0e0d8;padding:20px 24px;text-align:center;font-size:0.75rem;color:#7a5c52;line-height:1.8}
+  .alb-print-bar{display:none}
+  @media print{
+    body{margin:0}
+    .alb-person-card{page-break-inside:avoid;break-inside:avoid}
+    .alb-rank-row{page-break-inside:avoid;break-inside:avoid}
+  }
+</style>
+</head>
+<body>${content}</body>
+</html>`);
+  printWin.document.close();
+  printWin.onload = function(){ printWin.focus(); printWin.print(); };
+}
+
+function closeAdminLb(){
+  document.getElementById('adminLbSection').style.display='none';
+  document.getElementById('adminSection').style.display='block';
+}
+
+// ══════════════════════════════════
+//  ADMIN
+// ══════════════════════════════════
+let currentFilter='all';
+function filterSubs(f, btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdmin(f);
+}
+
+function renderAdmin(filter){
+  const subs=getSubmissions();
+  const filtered=filter==='all'?subs:subs.filter(s=>s.role===filter);
+
+  // stats
+  document.getElementById('statTotal').textContent=filtered.length;
+  if(filtered.length>0){
+    const avg=Math.round(filtered.reduce((a,s)=>a+s.total,0)/filtered.length);
+    const high=Math.max(...filtered.map(s=>s.total));
+    document.getElementById('statAvg').textContent=avg;
+    document.getElementById('statHigh').textContent=high;
+  } else {
+    document.getElementById('statAvg').textContent='০';
+    document.getElementById('statHigh').textContent='০';
+  }
+
+  // avg chart
+  if(filtered.length>0){
+    document.getElementById('avgCard').style.display='block';
+    let chartHtml='';
+    questions.forEach((q,i)=>{
+      const avg=(filtered.reduce((a,s)=>a+(s.answers[i]||0),0)/filtered.length).toFixed(1);
+      const pct=Math.round((avg/10)*100);
+      chartHtml+=`<div class="avg-row">
+        <div class="avg-label">${q.topic.replace(/^[^\s]+ /,'').substring(0,14)}</div>
+        <div class="avg-bar-bg"><div class="avg-bar" style="width:${pct}%"></div></div>
+        <div class="avg-val">${avg}</div>
+      </div>`;
+    });
+    document.getElementById('avgChart').innerHTML=chartHtml;
+  } else {
+    document.getElementById('avgCard').style.display='none';
+  }
+
+  // list
+  const listEl=document.getElementById('subsList');
+  if(filtered.length===0){
+    listEl.innerHTML='<div class="empty-state">এখনো কোনো মূল্যায়ন জমা হয়নি।<br>ব্যবহারকারীরা মূল্যায়ন করলে এখানে দেখা যাবে।</div>';
+    return;
+  }
+  let html='';
+  const sorted=[...filtered].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  sorted.forEach(s=>{
+    const pct=Math.round(s.total/100*100);
+    let label='';
+    if(s.total>=85) label='🌟 অসাধারণ';
+    else if(s.total>=70) label='👍 ভালো';
+    else if(s.total>=50) label='⚠️ মাঝারি';
+    else label='🆘 দুর্বল';
+    html+=`<div class="sub-item" onclick="showDetail('${s.id}')">
+      <div class="sub-top">
+        <div class="sub-name">${s.name}</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="sub-role">${s.role}</div>
+          <button class="del-btn" onclick="event.stopPropagation();confirmDelete('${s.id}','${s.name}')">🗑️</button>
+        </div>
+      </div>
+      <div class="sub-score-row">
+        <div class="sub-score-bar-bg"><div class="sub-score-bar" style="width:${pct}%"></div></div>
+        <div class="sub-score-num">${s.total}/১০০</div>
+      </div>
+      <div class="sub-date">${label} &nbsp;•&nbsp; ${s.date}</div>
+    </div>`;
+  });
+  listEl.innerHTML=html;
+}
+
+function showDetail(id){
+  const subs=getSubmissions();
+  const s=subs.find(x=>x.id===id);
+  if(!s) return;
+  document.getElementById('modalTitle').textContent=s.name+' ('+s.role+')';
+  document.getElementById('modalScore').textContent=s.total;
+
+  let pc,pt;
+  if(s.total>=85){pc='v-excellent';pt='🌟 অসাধারণ';}
+  else if(s.total>=70){pc='v-good';pt='👍 ভালো';}
+  else if(s.total>=50){pc='v-average';pt='⚠️ উন্নতির সুযোগ';}
+  else {pc='v-poor';pt='🆘 মনোযোগ জরুরি';}
+  document.getElementById('modalVerdict').innerHTML=`<span class="verdict-pill ${pc}">${pt}</span>`;
+
+  let bqHtml='';
+  questions.forEach((q,i)=>{
+    const sc=s.answers[i]||0;
+    bqHtml+=`<div class="bq-row">
+      <div class="bq-num">${i+1}</div>
+      <div class="bq-text">${q.topic}<br><span style="font-size:0.75rem;opacity:0.7">${q.q.substring(0,45)}...</span></div>
+      <div class="bq-score">${sc}/১০</div>
+    </div>`;
+  });
+  document.getElementById('modalBreakdown').innerHTML=`<div class="breakdown-card" style="margin-top:0;box-shadow:none;border:none;">${bqHtml}</div>`;
+  document.getElementById('detailModal').classList.add('open');
+}
+
+function closeModal(e){
+  if(e.target===document.getElementById('detailModal'))
+    document.getElementById('detailModal').classList.remove('open');
+}
+
+async function confirmDelete(id, name){
+  if(!confirm(`"${name}" এর মূল্যায়ন মুছে ফেলবেন?`)) return;
+  await deleteSubmission(id);
+  renderAdmin(currentFilter);
+}
+
+async function confirmDeleteAll(){
+  const subs = getSubmissions();
+  if(subs.length === 0) return alert('কোনো মূল্যায়ন নেই।');
+  if(!confirm(`সব ${subs.length} টি মূল্যায়ন মুছে ফেলবেন? এটি পূর্বাবস্থায় ফেরানো যাবে না!`)) return;
+  await subsRef.remove();
+  renderAdmin(currentFilter);
+}
+
+// ══════════════════════════════════
+//  RESTORE SESSION ON LOAD
+// ══════════════════════════════════
+window.addEventListener('load', ()=>{
+  const sess=getSession();
+  if(!sess) return;
+  if(sess.type==='admin'){
+    showAdminSection();
+  } else if(sess.type==='user'){
+    uName=sess.name; uRole=sess.role;
+    // check if they were mid-quiz (no, we don't restore mid-quiz, just show intro/result)
+    showUserSection();
+  }
+});
+</script>
+</body>
+</html>
