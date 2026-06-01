@@ -1203,8 +1203,14 @@ function makeUserId(name, role) {
 }
 
 function findSubmission(name, role) {
+  // ফলাফল দেখানো বন্ধ — সবসময় null return
+  return null;
+}
+
+function hasSubmitted(name, role) {
+  // শুধু duplicate check — submit করা আছে কিনা
   const id = makeUserId(name, role);
-  return _submissions.find(s => s.id === id) || null;
+  return !!_submissions.find(s => s.id === id);
 }
 
 // ══════════════════════════════════
@@ -1271,7 +1277,7 @@ function showUserSection() {
   document.getElementById('topBar').classList.add('visible');
   document.getElementById('topBarName').textContent = uName;
 
-  const existing = findSubmission(uName, uRole);
+  const existing = hasSubmitted(uName, uRole);
   document.getElementById('introSection').style.display='block';
   if (existing) {
     document.getElementById('alreadyDoneBox').style.display='block';
@@ -1317,14 +1323,6 @@ async function redoQuiz() {
   cur=0; answers=[];
   document.getElementById('alreadyDoneBox').style.display='none';
   document.getElementById('freshIntroBox').style.display='block';
-}
-
-function viewOwnResult() {
-  const existing = findSubmission(uName, uRole);
-  if (!existing) return;
-  answers = existing.answers;
-  document.getElementById('introSection').style.display='none';
-  displayResult(existing.answers, uName, uRole);
 }
 
 function renderQ() {
