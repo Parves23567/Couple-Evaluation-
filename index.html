@@ -1206,9 +1206,13 @@ function makeUserId(name, role) {
 
 function findSubmission(name, role) {
   const id = makeUserId(name, role);
-  // শুধু নিজের ডিভাইস থেকে করা submission দেখাবে
-  if (!isMyDevice(id)) return null;
-  return _submissions.find(s => s.id === id) || null;
+  const sub = _submissions.find(s => s.id === id);
+  if (!sub) return null;
+  // যদি submission এ deviceToken থাকে, তাহলে এই ডিভাইসের token এর সাথে মিলাও
+  if (sub.deviceToken && sub.deviceToken !== getDeviceToken()) return null;
+  // পুরনো submission এ deviceToken নেই — localStorage দিয়ে check করো
+  if (!sub.deviceToken && !isMyDevice(id)) return null;
+  return sub;
 }
 
 // ══════════════════════════════════
@@ -1449,6 +1453,7 @@ async function finalSubmit(){
   const id = makeUserId(uName, uRole);
   const entry = {
     id, name:uName, role:uRole,
+    deviceToken: getDeviceToken(),
     answers:[...answers],
     total: answers.reduce((a,b)=>a+b,0),
     date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
