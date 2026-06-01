@@ -1176,7 +1176,7 @@ async function setPublished(val) {
 }
 
 function makeUserId(name, role) {
-  return (name.trim().toLowerCase() + '_' + role).replace(/\s+/g,'_');
+  return name.trim().toLowerCase().replace(/\s+/g,'_');
 }
 
 function findSubmission(name, role) {
@@ -1246,7 +1246,7 @@ function showUserSection() {
   document.getElementById('resultSection').style.display='none';
 
   document.getElementById('topBar').classList.add('visible');
-  document.getElementById('topBarName').textContent = uName + ' (' + uRole + ')';
+  document.getElementById('topBarName').textContent = uName;
 
   const existing = findSubmission(uName, uRole);
   document.getElementById('introSection').style.display='block';
@@ -1284,7 +1284,7 @@ function startQuiz() {
   cur=0; answers=[];
   document.getElementById('introSection').style.display='none';
   document.getElementById('quizSection').style.display='block';
-  document.getElementById('badgeName').textContent = uName + ' (' + uRole + ')';
+  document.getElementById('badgeName').textContent = uName;
   renderQ();
 }
 
@@ -1345,7 +1345,7 @@ function nextQ(){
 function showReview(){
   document.getElementById('quizSection').style.display='none';
   document.getElementById('reviewSection').style.display='block';
-  document.getElementById('reviewBadgeName').textContent = uName + ' (' + uRole + ')';
+  document.getElementById('reviewBadgeName').textContent = uName;
   renderReview();
 }
 
