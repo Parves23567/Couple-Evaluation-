@@ -610,6 +610,50 @@ header {
   .footer-brand { display:block !important; }
   body { background:#fff; }
 }
+
+/* ── SITE FOOTER ── */
+.site-footer {
+  background: linear-gradient(135deg, var(--deep), #4a1520);
+  color: #fff;
+  text-align: center;
+  padding: 28px 20px 24px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(196,154,60,0.18), transparent 65%);
+  pointer-events: none;
+}
+.site-footer-inner { position: relative; z-index: 1; }
+.site-footer-logo {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold2);
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+.site-footer-text {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+.site-footer-text strong { color: var(--gold2); font-weight: 600; }
+.site-footer-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 10px auto;
+}
+.site-footer-copy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 1px;
+}
 </style>
 </head>
 <body>
@@ -901,49 +945,6 @@ header {
   <button class="btn-ghost" onclick="backToQuiz()">← প্রশ্নে ফিরে যান</button>
 </div>
 
-<!-- ══ RESULT ══ -->
-<div id="resultSection" style="display:none">
-  <div id="publishedNotice" style="display:none" class="published-notice">
-    <div class="notice-icon">📢</div>
-    <div><p>আপনার ফলাফল লিডারবোর্ডে প্রকাশিত হয়েছে</p><small>অ্যাডমিন সবার স্কোর শেয়ার করেছেন</small></div>
-  </div>
-  <div class="result-header">
-    <div class="result-name" id="rName"></div>
-    <div class="result-title">জীবনসঙ্গী মূল্যায়ন ফলাফল</div>
-    <div class="big-score-wrap">
-      <svg viewBox="0 0 150 150">
-        <circle cx="75" cy="75" r="62" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="10"/>
-        <circle cx="75" cy="75" r="62" fill="none" stroke="url(#rg2)"
-          stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="389.6" id="rArc" stroke-dashoffset="389.6"/>
-        <defs>
-          <linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#e8c56d"/>
-            <stop offset="100%" stop-color="#c1666b"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <div class="big-score-inner">
-        <div class="big-score-num" id="rNum">০</div>
-        <div class="big-score-max">/ ১০০</div>
-      </div>
-    </div>
-    <div id="vPill"></div>
-    <div class="verdict-msg" id="vMsg"></div>
-  </div>
-  <div class="breakdown-card">
-    <h3>প্রশ্নভিত্তিক বিশ্লেষণ</h3>
-    <div id="bqList"></div>
-  </div>
-  <div class="advice-card" id="adviceCard">
-    <h3><span>💡</span> পরামর্শ ও পর্যবেক্ষণ</h3>
-    <p id="adviceText"></p>
-  </div>
-  <button class="btn-ghost" onclick="printResult()">🖨️ ফলাফল প্রিন্ট করুন</button>
-  <button class="btn-ghost" id="viewLbBtn" style="display:none" onclick="showLeaderboard()">🏆 লিডারবোর্ড দেখুন</button>
-  <p class="disclaimer">এই মূল্যায়ন শুধুমাত্র আত্মসচেতনতা ও পারস্পরিক বোঝাপড়ার জন্য।<br>জটিল সম্পর্কে পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।</p>
-  <div class="footer-brand">✦ Dashing Family ✦</div>
-</div>
 
 <!-- ══ ADMIN PANEL ══ -->
 <div id="adminSection">
@@ -1254,7 +1255,7 @@ function logout() {
   document.getElementById('introSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
   document.getElementById('reviewSection').style.display='none';
-  document.getElementById('resultSection').style.display='none';
+  
   document.getElementById('adminSection').style.display='none';
   document.getElementById('adminLbSection').style.display='none';
   document.getElementById('leaderboardSection').style.display='none';
@@ -1272,7 +1273,7 @@ function showUserSection() {
   document.getElementById('adminSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
   document.getElementById('reviewSection').style.display='none';
-  document.getElementById('resultSection').style.display='none';
+  
 
   document.getElementById('topBar').classList.add('visible');
   document.getElementById('topBarName').textContent = uName;
@@ -1293,7 +1294,7 @@ function showAdminSection() {
   document.getElementById('introSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
   document.getElementById('reviewSection').style.display='none';
-  document.getElementById('resultSection').style.display='none';
+  
   document.getElementById('leaderboardSection').style.display='none';
   document.getElementById('adminLbSection').style.display='none';
   document.getElementById('adminSection').style.display='block';
@@ -1462,13 +1463,13 @@ async function finalSubmit(){
 //  RESULT DISPLAY
 // ══════════════════════════════════
 function displayResult(ans, name, role){
-  // ফলাফল দেখানো সম্পূর্ণ বন্ধ
-  document.getElementById('resultSection').style.display='none';
+  // Result section সম্পূর্ণ বন্ধ
   document.getElementById('introSection').style.display='block';
   document.getElementById('freshIntroBox').style.display='none';
   document.getElementById('alreadyDoneBox').style.display='block';
-  return;
 }
+
+function printResult(){ return; }
 
   // published notice (driven by Firebase realtime listener)
   const pub = isPublished();
@@ -1523,14 +1524,14 @@ async function togglePublish(){
 }
 
 function showLeaderboard(){
-  document.getElementById('resultSection').style.display='none';
+  
   document.getElementById('leaderboardSection').style.display='block';
   renderLeaderboard();
 }
 
 function hideLb(){
   document.getElementById('leaderboardSection').style.display='none';
-  document.getElementById('resultSection').style.display='block';
+  
 }
 
 function renderLeaderboard(){
@@ -1867,5 +1868,17 @@ window.addEventListener('load', ()=>{
   }
 });
 </script>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-logo">✦ Dashing Family ✦</div>
+    <div class="site-footer-divider"></div>
+    <p class="site-footer-text">তৈরিতে — <strong>মো: পারভেজ রানা পলাশ</strong></p>
+    <div class="site-footer-divider"></div>
+    <p class="site-footer-copy">All Rights Reserved © 2026</p>
+  </div>
+</footer>
+
 </body>
 </html>
