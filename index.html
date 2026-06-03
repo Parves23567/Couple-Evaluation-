@@ -589,6 +589,17 @@ header {
   .alb-stats-row { page-break-after: avoid; }
 }
 
+.alb-rank-category-title {
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: #fff;
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
 /* delete buttons */
 .del-btn {
   background:rgba(248,113,113,0.15); border:1.5px solid #f87171;
@@ -603,56 +614,52 @@ header {
 }
 .del-all-btn:hover { background:#f87171; color:#fff; }
 
-/* print styles */
-@media print {
-  .top-bar, .btn-ghost, .btn-main, .advice-card, .disclaimer, header { display:none !important; }
-  #resultSection { display:block !important; }
-  .footer-brand { display:block !important; }
-  body { background:#fff; }
-}
-
 /* ── SITE FOOTER ── */
 .site-footer {
-  background: linear-gradient(135deg, var(--deep), #4a1520);
-  color: #fff;
+  background: linear-gradient(135deg, var(--deep), #3d0f18);
+  padding: 28px 20px;
   text-align: center;
-  padding: 28px 20px 24px;
-  margin-top: 40px;
+  margin-top: 32px;
   position: relative;
   overflow: hidden;
 }
 .site-footer::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(196,154,60,0.18), transparent 65%);
-  pointer-events: none;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--rose), var(--gold), transparent);
 }
 .site-footer-inner { position: relative; z-index: 1; }
 .site-footer-logo {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gold2);
+  font-size: 0.75rem;
   letter-spacing: 4px;
+  color: var(--gold2);
   margin-bottom: 10px;
+  opacity: 0.8;
 }
 .site-footer-text {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: rgba(255,255,255,0.75);
   margin-bottom: 6px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
-.site-footer-text strong { color: var(--gold2); font-weight: 600; }
-.site-footer-divider {
-  width: 60px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 10px auto;
+.site-footer-text strong {
+  color: var(--gold2);
+  font-weight: 700;
 }
 .site-footer-copy {
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.4);
   letter-spacing: 1px;
+}
+
+/* print styles */
+@media print {
+  .top-bar, .btn-ghost, .btn-main, .advice-card, .disclaimer, header { display:none !important; }
+  #resultSection { display:block !important; }
+  .footer-brand { display:block !important; }
+  body { background:#fff; }
 }
 </style>
 </head>
@@ -1591,67 +1598,97 @@ function openAdminLeaderboard(){
     <div class="alb-stat"><div class="alb-stat-num">${high}</div><div class="alb-stat-lbl">সর্বোচ্চ স্কোর</div></div>
   `;
 
-  // Rank list
-  let rankHtml='';
-  sorted.forEach((s,i)=>{
-    const pct = s.total;
-    const rc = i<3 ? rankClasses[i] : '';
-    const medal = i<3 ? medals[i] : '';
-    let verdict='';
-    if(s.total>=85) verdict='🌟 অসাধারণ';
-    else if(s.total>=70) verdict='👍 ভালো';
-    else if(s.total>=50) verdict='⚠️ মাঝারি';
-    else verdict='🆘 দুর্বল';
-    rankHtml+=`<div class="alb-rank-row ${rc}">
-      <div class="alb-rank-num">${i+1}</div>
-      <div class="alb-rank-info">
-        <div class="alb-rank-name">${s.name}</div>
-        <span class="alb-rank-role">${s.role}</span>
-      </div>
-      <div class="alb-rank-bar-wrap">
-        <div class="alb-rank-bar-bg"><div class="alb-rank-bar" style="width:${pct}%"></div></div>
-        <div style="font-size:0.65rem;color:var(--muted);margin-top:2px;text-align:center">${verdict}</div>
-      </div>
-      <div class="alb-rank-score">${s.total}<span>/১০০</span></div>
-      <div class="alb-medal">${medal}</div>
-    </div>`;
-  });
-  document.getElementById('albRankList').innerHTML=rankHtml;
+  // Stats — স্বামী ও স্ত্রী আলাদা
+  const husbands = subs.filter(s => s.role === 'স্বামী');
+  const wives    = subs.filter(s => s.role === 'স্ত্রী');
+  document.getElementById('albStats').innerHTML=`
+    <div class="alb-stat"><div class="alb-stat-num">${subs.length}</div><div class="alb-stat-lbl">মোট অংশগ্রহণকারী</div></div>
+    <div class="alb-stat"><div class="alb-stat-num">${husbands.length}</div><div class="alb-stat-lbl">স্বামী</div></div>
+    <div class="alb-stat"><div class="alb-stat-num">${wives.length}</div><div class="alb-stat-lbl">স্ত্রী</div></div>
+  `;
 
-  // Per-person breakdown
-  let bdHtml='';
-  sorted.forEach((s,i)=>{
-    let pc,pt;
-    if(s.total>=85){pc='v-excellent';pt='🌟 অসাধারণ';}
-    else if(s.total>=70){pc='v-good';pt='👍 ভালো';}
-    else if(s.total>=50){pc='v-average';pt='⚠️ উন্নতির সুযোগ';}
-    else{pc='v-poor';pt='🆘 মনোযোগ জরুরি';}
-
-    let qHtml='';
-    questions.forEach((q,qi)=>{
-      const sc=s.answers[qi]||0;
-      qHtml+=`<div class="alb-q-row">
-        <div class="alb-q-topic">${q.topic}</div>
-        <div class="alb-q-bar-bg"><div class="alb-q-bar" style="width:${sc*10}%"></div></div>
-        <div class="alb-q-score">${sc}/১০</div>
+  // ── Rank builder function ──
+  function buildRankHtml(list, title, color) {
+    if(list.length === 0) return `<div style="text-align:center;padding:16px;color:#999;font-size:0.85rem">কোনো তথ্য নেই</div>`;
+    const sortedList = [...list].sort((a,b)=>b.total-a.total);
+    const medals = ['🥇','🥈','🥉'];
+    const rankClasses = ['r1','r2','r3'];
+    let html = `<div class="alb-rank-category-title" style="background:${color}">${title}</div>`;
+    sortedList.forEach((s,i)=>{
+      const rc = i<3 ? rankClasses[i] : '';
+      const medal = i<3 ? medals[i] : '';
+      let verdict='';
+      if(s.total>=85) verdict='🌟 অসাধারণ';
+      else if(s.total>=70) verdict='👍 ভালো';
+      else if(s.total>=50) verdict='⚠️ মাঝারি';
+      else verdict='🆘 দুর্বল';
+      html+=`<div class="alb-rank-row ${rc}">
+        <div class="alb-rank-num">${i+1}</div>
+        <div class="alb-rank-info">
+          <div class="alb-rank-name">${s.name}</div>
+          <span class="alb-rank-role">${s.role}</span>
+        </div>
+        <div class="alb-rank-bar-wrap">
+          <div class="alb-rank-bar-bg"><div class="alb-rank-bar" style="width:${s.total}%"></div></div>
+          <div style="font-size:0.65rem;color:var(--muted);margin-top:2px;text-align:center">${verdict}</div>
+        </div>
+        <div class="alb-rank-score">${s.total}<span>/১০০</span></div>
+        <div class="alb-medal">${medal}</div>
       </div>`;
     });
+    return html;
+  }
 
-    bdHtml+=`<div class="alb-person-card">
-      <div class="alb-person-head">
-        <div>
-          <div class="alb-person-name">${i+1}. ${s.name}</div>
-          <div class="alb-person-role">${s.role} • ${s.date}</div>
+  // স্বামীরা যে স্ত্রীদের মূল্যায়ন করেছে → সেরা স্ত্রী ranking
+  // স্ত্রীরা যে স্বামীদের মূল্যায়ন করেছে → সেরা স্বামী ranking
+  // role = মূল্যায়নকারীর role, তাই:
+  // স্বামী মূল্যায়নকারী → স্ত্রীকে মূল্যায়ন করেছে
+  // স্ত্রী মূল্যায়নকারী → স্বামীকে মূল্যায়ন করেছে
+  const wifeRankHtml    = buildRankHtml(husbands, '👸 সেরা স্ত্রী — স্বামীদের মূল্যায়নে', 'linear-gradient(135deg,#9b3a42,#c1666b)');
+  const husbandRankHtml = buildRankHtml(wives,    '🤴 সেরা স্বামী — স্ত্রীদের মূল্যায়নে', 'linear-gradient(135deg,#2a3550,#4a6090)');
+
+  document.getElementById('albRankList').innerHTML = wifeRankHtml + '<div style="height:20px"></div>' + husbandRankHtml;
+
+  // Per-person breakdown — আলাদা বিভাগে
+  function buildBreakdown(list, title, color) {
+    if(list.length===0) return '';
+    const sortedList = [...list].sort((a,b)=>b.total-a.total);
+    let html=`<div class="alb-rank-category-title" style="background:${color};margin-bottom:12px">${title}</div>`;
+    sortedList.forEach((s,i)=>{
+      let pt='';
+      if(s.total>=85) pt='🌟 অসাধারণ';
+      else if(s.total>=70) pt='👍 ভালো';
+      else if(s.total>=50) pt='⚠️ উন্নতির সুযোগ';
+      else pt='🆘 মনোযোগ জরুরি';
+      let qHtml='';
+      questions.forEach((q,qi)=>{
+        const sc=s.answers[qi]||0;
+        qHtml+=`<div class="alb-q-row">
+          <div class="alb-q-topic">${q.topic}</div>
+          <div class="alb-q-bar-bg"><div class="alb-q-bar" style="width:${sc*10}%"></div></div>
+          <div class="alb-q-score">${sc}/১০</div>
+        </div>`;
+      });
+      html+=`<div class="alb-person-card">
+        <div class="alb-person-head">
+          <div>
+            <div class="alb-person-name">${i+1}. ${s.name}</div>
+            <div class="alb-person-role">${s.role} • ${s.date}</div>
+          </div>
+          <div style="text-align:right">
+            <div class="alb-person-score">${s.total}/১০০</div>
+            <div class="alb-person-verdict">${pt}</div>
+          </div>
         </div>
-        <div style="text-align:right">
-          <div class="alb-person-score">${s.total}/১০০</div>
-          <div class="alb-person-verdict">${pt}</div>
-        </div>
-      </div>
-      <div class="alb-q-rows">${qHtml}</div>
-    </div>`;
-  });
-  document.getElementById('albBreakdown').innerHTML=bdHtml;
+        <div class="alb-q-rows">${qHtml}</div>
+      </div>`;
+    });
+    return html;
+  }
+
+  const bdWife    = buildBreakdown(husbands, '👸 স্ত্রীদের বিস্তারিত — স্বামীদের মূল্যায়নে', 'linear-gradient(135deg,#9b3a42,#c1666b)');
+  const bdHusband = buildBreakdown(wives,    '🤴 স্বামীদের বিস্তারিত — স্ত্রীদের মূল্যায়নে', 'linear-gradient(135deg,#2a3550,#4a6090)');
+  document.getElementById('albBreakdown').innerHTML = bdWife + '<div style="height:20px"></div>' + bdHusband;
 }
 
 function printAdminLb(){
@@ -1872,7 +1909,9 @@ window.addEventListener('load', ()=>{
 <!-- ══ FOOTER ══ -->
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <p class="site-footer-text">তৈরিতে- <strong>মো: পারভেজ রানা পলাশ</strong>- All Rights Reserved &copy;2026</p>
+    <div class="site-footer-logo">✦ Dashing Family ✦</div>
+    <p class="site-footer-text">তৈরিতে — <strong>মো: পারভেজ রানা পলাশ</strong></p>
+    <p class="site-footer-copy">All Rights Reserved © 2026</p>
   </div>
 </footer>
 
